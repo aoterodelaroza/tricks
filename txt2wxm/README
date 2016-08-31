@@ -1,0 +1,44 @@
+txt2wxm.zip  DISTRIBUTED as GPL/v2
+
+(c) Víctor Luaña, Universidad de Oviedo, July 2016
+    (victor@fluor.quimica.uniovi.es)
+    (victor.luana@gmail.com)
+
+Included in this zip:
+---------------------
+00README ...... This description
+txt2wxm.awk ... gawk filter to Convert a commented utf-8 textfile into
+                a wxmaxima worksheet.
+en_show.txt ... A showcase example.
+en_show.wxm ... The result of 'txt2wxm.awk en_show.txt > en_show.wxm'
+                Use as: wxmaxima ./en_show.wxm
+ex?.{eps,png,svg} ... Graphs produced by the wxm.
+
+Use as:  txt2wxm.awk input > worksheet.wxm
+Once the worksheet is completed you can enter it in wxmaxima
+as: wxmaxima ./worksheet.wxm
+
+Once recognized by wxmaxima the order "evaluate all visible cells (crtl-R)"
+will proceed to do all operations required. The user can experiment altering
+parameters and orders and entering the new orders with crtl-ENTER as usual.
+
+Language reecognized by the awk preprocessor:
+---------------------------------------------
+#TI title ........ General title.
+#TS section ...... Section title
+#TSS sub ......... Subsection
+#TR text ......... General text with no special emphasis level.
+# text ........... General text with no special emphasis level.
+
+Any other line is assumed to be language to be interpreted by wxmaxima.
+and classified as "code"
+
+Several lines with the same classification level will be grouped as the
+same cell in the wxm file. A code line that ends in a ";" will mark the
+end of a cell.
+
+Not included here:
+------------------
+"turtle.mac" package adapted from Mario Riotorto for his draw system. Get
+it from <http://riotorto.users.sourceforge.net/gnuplot/turtle/turtle.mac>
+and put it in the ../turtle/ directory for the ex_show.wxm work completely.
