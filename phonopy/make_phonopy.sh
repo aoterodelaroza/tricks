@@ -48,6 +48,9 @@ CELL_FILENAME = phon.scf.in
 DOS=.TRUE.
 DOS_RANGE=0 150 0.1
 WRITE_MESH=.FALSE.
+TPROP=.TRUE.
+TMIN=298.15
+TMAX=298.15
 EOF
 
 	## Write the postphon file
