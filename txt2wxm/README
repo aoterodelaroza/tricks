@@ -1,12 +1,23 @@
 txt2wxm.zip  DISTRIBUTED as GPL/v2
 
-(c) VÃ­ctor LuaÃ±a, Universidad de Oviedo, July 2016
+(c) Víctor Luaña, Universidad de Oviedo (Spain), July 2016
     (victor@fluor.quimica.uniovi.es)
     (victor.luana@gmail.com)
+    Freeware licensed under the GNU Free Documentation License
+    <https://www.gnu.org/licenses/fdl.html>
+
+PURPOSE AND MOTIVATION
+----------------------
+
+wxmaxima is a nice GUI frontend for maxima, a classical and extraordinary
+computer algebra system. However, Graphical User Interfaces are less
+powerful than a real text editor like vim or emacs. So I developed this
+translator that let users create a simple text format (ASCII and UTF-8 I
+have tried) and converts it to a *.wxm file that the wxmaxima GUI accepts.
 
 Included in this zip:
 ---------------------
-00README ...... This description
+README-txt2wxm  This description
 txt2wxm.awk ... gawk filter to Convert a commented utf-8 textfile into
                 a wxmaxima worksheet.
 en_show.txt ... A showcase example.
@@ -18,7 +29,7 @@ Use as:  txt2wxm.awk input > worksheet.wxm
 Once the worksheet is completed you can enter it in wxmaxima
 as: wxmaxima ./worksheet.wxm
 
-Once recognized by wxmaxima the order "evaluate all visible cells (crtl-R)"
+Once recognized by wxmaxima, the order "evaluate all visible cells (crtl-R)"
 will proceed to do all operations required. The user can experiment altering
 parameters and orders and entering the new orders with crtl-ENTER as usual.
 
