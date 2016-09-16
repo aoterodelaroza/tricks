@@ -7,7 +7,7 @@
 # Requirements:
 # * This code use the texfot perl script to call latex.
 #   you can obtain it on <https://www.ctan.org/pkg/texfot> but if this
-#   is inappropriate you can remove it os use a bare alias:
+#   is inappropriate you can remove it or use a bare alias:
 # * CTAN pdfcropt is used to remove blank space around
 #   <https://www.ctan.org/pkg/pdfcrop>
 # ^ zxpdf is currently used to see the final pdf (change to whatever fits)
@@ -24,9 +24,10 @@ if [ -f "${in}.tex" ]; then
    texfot latex ${in2}.tex
    dvipdf ${in2}.dvi
    pdfcrop ${in2}.pdf
-   mv ${in2}-crop.pdf ${in2}.pdf
+   mv ${in2}-crop.pdf ${in}.pdf
    mv ${in2}.pdf ${in}.pdf
    zxpdf  ${in}.pdf
+   rm ${in2}.*
 else
    echo "${in}.tex NO existe!!!"
    echo "Use: $0 foo to compile foo.tex!"
