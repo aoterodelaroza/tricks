@@ -1,14 +1,9 @@
 program fortran_uses_c
   use iso_c_binding
+  use flibc, only: string_f2c, string_c2f
   implicit none
        
   interface
-     ! From fortranwiki.org (c interface module)
-     pure function c_strlen(s) result(result) bind(C,name="strlen")
-       use iso_c_binding
-       integer(c_size_t) :: result
-       type(c_ptr), value, intent(in) :: s  !character(len=*), intent(in)
-     end function C_strlen
      ! Simple routine with no arguments and no return value
      subroutine fun1() bind(c)
        use iso_c_binding
@@ -44,53 +39,16 @@ program fortran_uses_c
   ! write (*,*) "after C: i1 = ", i1, " i1r = ", i1r
   ! write (*,*) "return value: iexit = ", iexit
 
-  !xx! Pass a string
-  
-  character(len=:), allocatable :: fstr
-  character(kind=c_char), allocatable :: str(:)
-  type(c_ptr) :: ostr_c
+  ! !xx! Pass a string
+  ! character(len=:), allocatable :: fstr
+  ! character(kind=c_char), allocatable :: str(:)
+  ! type(c_ptr) :: ostr_c
 
-  fstr = "hello "
-  write (*,*) "before C: ", fstr
-  str = string_f2c(fstr)
-  call str1(str,ostr_c)
-  fstr = string_c2f(ostr_c)
-  write (*,*) "after C: ", fstr
-
-contains
-  !> Convert a fortran string to a C string
-  function string_f2c(str0) result(str)
-    character(kind=c_char,len=*), intent(in) :: str0
-    character(kind=c_char), allocatable :: str(:)
-
-    integer :: i
-
-    if (allocated(str)) deallocate(str)
-    allocate(str(len(str0)+1))
-    do i = 1, len(str0)
-       str(i) = str0(i:i)
-    end do
-    str(len(str0)+1) = char(0)
-
-  end function string_f2c
-
-  !> Convert a C string (given as type(c_ptr)) to a fortran string
-  function string_c2f(str0) result(str)
-    use iso_c_binding
-    type(c_ptr), intent(in) :: str0
-    character(len=:), allocatable :: str
-
-    integer(c_size_t) :: i, len
-    character(kind=c_char),pointer,dimension(:) :: auxf
-
-    len = c_strlen(str0)
-    allocate(character(len=len) :: str)
-    call c_f_pointer(str0, auxf, (/len+1/))
-    do i = 1, len
-       str(i:i) = auxf(i)
-    end do
-    nullify(auxf)
-
-  end function string_c2f
+  ! fstr = "hello "
+  ! write (*,*) "before C: ", fstr
+  ! str = string_f2c(fstr)
+  ! call str1(str,ostr_c)
+  ! fstr = string_c2f(ostr_c)
+  ! write (*,*) "after C: ", fstr
 
 end program fortran_uses_c
