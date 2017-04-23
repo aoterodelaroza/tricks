@@ -4,6 +4,15 @@ module fmod
 
   public
 
+  type, bind(c) :: modtype
+     integer(c_int) :: id1
+     real(c_double) :: f1
+     character(kind=c_char,len=1) :: str(3)
+  end type modtype
+  type(modtype), allocatable, target :: mm(:)
+  integer(c_int), bind(c) :: nm
+  type(c_ptr), bind(c,name="mm") :: mpoint
+
 contains
 
   ! A trivial hello world example with no arguments.
@@ -142,5 +151,200 @@ contains
     cout = f_c_string_dup("blehblah!")
 
   end function string_types
+
+  ! pass array arguments to and from C
+  subroutine array_arguments(n,x1,x2,x3) bind(c)
+    integer(c_int), intent(in), value :: n
+    real(c_double), intent(inout) :: x1(n)
+    real(c_double), intent(inout) :: x2(n,n)
+    real(c_double), intent(inout) :: x3(n,n,n)
+
+    integer :: i, j, k
+    
+    write (*,*) "n: "
+    write (*,*) n
+    write (*,*) "x1: "
+    do i = 1, n
+       write (*,*) i, x1(i)
+    end do
+    write (*,*) "x2: "
+    do i = 1, n
+       do j = 1, n
+          write (*,*) i, j, x2(i,j)
+       end do
+    end do
+    write (*,*) "x3: "
+    do i = 1, n
+       do j = 1, n
+          do k = 1, n
+             write (*,*) i, j, k, x3(i,j,k)
+          end do
+       end do
+    end do
+    do i = 1, n
+       x1(i) = real(i**2,8)
+       do j = 1, n
+          x2(i,j) = real(i**2+j**2,8)
+          do k = 1, n
+             x3(i,j,k) = real(i**2+j**2+k**2,8)
+          end do
+       end do
+    end do
+
+  end subroutine array_arguments
+
+  ! pass one-dimensional arrays
+  subroutine array_arguments_pointer(xfull,xempty) bind(c)
+    type(c_ptr), intent(inout) :: xfull
+    type(c_ptr), intent(inout) :: xempty
+
+    real(c_double), pointer :: ffull(:)
+    real(c_double), pointer :: fempty(:)
+
+    integer :: i
+
+    write (*,*) "associated xfull: ", c_associated(xfull)
+    write (*,*) "associated xempty: ", c_associated(xempty)
+
+    ! use xfull and deallocate it, pass it back as null to C
+    call c_f_pointer(xfull,ffull,(/3/))
+    write (*,*) "associated ffull: ", associated(ffull)
+    write (*,*) "size ffull: ", size(ffull,1)
+    write (*,*) "contents ffull: "
+    do i = 1, 3
+       write (*,*) i, ffull(i)
+    end do
+    deallocate(ffull)
+    xfull = c_loc(ffull)
+
+    ! allocate xempty and assign it
+    allocate(fempty(5))
+    do i = 1, 5
+       fempty(i) = 20d0*i
+    end do
+    xempty = c_loc(fempty)
+
+  end subroutine array_arguments_pointer
+
+  ! pass two-dimensional arrays
+  subroutine array2_arguments_pointer(xfull,xempty) bind(c)
+    type(c_ptr), intent(inout) :: xfull
+    type(c_ptr), intent(inout) :: xempty
+
+    integer :: i, j
+
+    real(c_double), pointer :: ffull(:,:)
+    real(c_double), pointer :: fempty(:,:)
+
+    write (*,*) "associated xfull: ", c_associated(xfull)
+    write (*,*) "associated xempty: ", c_associated(xempty)
+
+    ! use xfull and deallocate it, pass it back as null to C
+    call c_f_pointer(xfull,ffull,(/4,3/))
+    write (*,*) "associated ffull: ", associated(ffull)
+    write (*,*) "size ffull: ", size(ffull,1), size(ffull,2)
+    write (*,*) "contents ffull: "
+    do i = 1, 3
+       do j = 1, 4
+          write (*,*) i, j, ffull(j,i)
+       end do
+    end do
+    deallocate(ffull)
+    xfull = c_loc(ffull)
+
+    ! allocate xempty and assign it
+    allocate(fempty(3,4))
+    write (*,*) "contents fempty: "
+    do i = 1, 4
+       do j = 1, 3
+          fempty(j,i) = 20d0*i+j
+          write (*,*) i, j, fempty(j,i)
+       end do
+    end do
+    xempty = c_loc(fempty)
+
+  end subroutine array2_arguments_pointer
+
+  ! pass the user defined type
+  subroutine type_pointer(ss,ssin) bind(c)
+    type, bind(c) :: bleh 
+       integer(c_int) :: id1
+       real(c_double) :: f1
+       character(kind=c_char,len=1) :: str(3)
+    end type bleh
+    type(bleh), intent(inout) :: ss
+    type(bleh), intent(in), value :: ssin
+
+    character(len=3) :: fstr
+
+    write (*,*) "in fortran: "
+    write (*,*) ss%id1
+    write (*,*) ss%f1
+    fstr = ""
+    call c_f_string(ss%str,fstr)
+    write (*,*) trim(fstr)
+    write (*,*) ssin%id1
+    write (*,*) ssin%f1
+    ss%id1 = 10
+    ss%f1 = -80d0
+    call f_c_string("cd",ss%str)
+
+  end subroutine type_pointer
+
+  ! pass an array of user-defined type
+  subroutine type_pointer_array(ssempty,ssfull) bind(c)
+    type, bind(c) :: bleh 
+       integer(c_int) :: id1
+       real(c_double) :: f1
+       character(kind=c_char,len=1) :: str(3)
+    end type bleh
+    type(c_ptr), intent(inout) :: ssempty
+    type(c_ptr), intent(inout) :: ssfull
+
+    type(bleh), pointer :: ffull(:)
+    type(bleh), pointer :: fempty(:)
+
+    character(len=3) :: fstr
+    integer :: i
+
+    write (*,*) "associated ssfull: ", c_associated(ssfull)
+    write (*,*) "associated ssempty: ", c_associated(ssempty)
+
+    call c_f_pointer(ssfull,ffull,(/4/))
+    write (*,*) "associated ffull: ", associated(ffull)
+    write (*,*) "size ffull: ", size(ffull,1)
+    write (*,*) "contents ffull: "
+    do i = 1, 4
+       write (*,*) "loop ", i
+       write (*,*) "id1 ", ffull(i)%id1
+       write (*,*) "f1 ", ffull(i)%f1
+       write (*,*) "str ", ffull(i)%str
+    end do
+
+    allocate(fempty(4))
+    write (*,*) "contents fempty: "
+    do i = 1, 4
+       fempty(i)%id1 = 100 * i
+       fempty(i)%f1 = -100 * i**2
+       fempty(i)%str = (/"a","h","!"/)
+    end do
+    ssempty = c_loc(fempty)
+
+  end subroutine type_pointer_array
+
+  subroutine prepare_host() bind(c)
+    integer :: i
+
+    if (allocated(mm)) deallocate(mm)
+    nm = 3
+    allocate(mm(nm))
+    do i = 1, nm
+       mm(i)%id1 = 2 * i
+       mm(i)%f1 = i*200
+       mm(i)%str = (/char(50+i),char(70+i),c_null_char/)
+    end do
+    mpoint = c_loc(mm(1))
+
+  end subroutine prepare_host
 
 end module fmod
