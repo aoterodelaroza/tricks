@@ -70,9 +70,13 @@ function printinfo(){
 		printf("too many opt steps (step=%d, e=%.8f, ediff=%.8f)",nstep,e[nstep],ediff)
 	    } else {
 		if (isvcrelax){
-		    printf("I do not know how to handle variable-cell optimizations")
+		    if (nstep > 1)
+			ediff = e[nstep] - e[nstep-1]
+		    else
+			ediff = 0
+		    printf("vc-relax done in %d steps - ene= %.8f diff= %.8f Ry, %.4f kcal/mol ",nstep,e[nstep],ediff,ediff/2*627.51)
 		} else {
-		    printf("done in %d steps - ene= %.8f ",nstep,e[nstep])
+		    printf("relax done in %d steps - ene= %.8f ",nstep,e[nstep])
 		}
 	    }
 	}
