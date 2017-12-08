@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# (c) Víctor Luaña, 2016-05-05. Oviedo.
+#
+# viewer for several file types not neccessarily in the current
+# directory. Given the thename of the file the locate script looks for
+# its full path and calls a viewer based on the extension.
+#
+# KDE viewers create extra *.xml files using the name of their input
+# This script takes care of avoiding them.
+if [ -z "$1" ]; then
+   # No parameters given
+   echo "Usage: $0 <file_with_unknown_location>.<pdf|djvu|jpg|png|gif|svg>"
+fi
+alias feh='feh -.'
+v_PS=gv; v_PDF=evince; v_DJV=djview; v_EPUB=fbreader
+v_JPG=feh; v_PNG=feh; v_GIF=eog;
+v_SVG=inkscape; v_FIG=xfig
+v_DOC=libreoffice
+for f in "$@"; do
+   fullfile=`locate ${f}|grep "${f}$"`
+   echo "fullfile:  ${fullfile}"
+   filename=`basename "${fullfile}"`
+   extension="${filename##*.}"
+   filename="${filename%.*}"
+   echo "filename:  ${filename}"
+   echo "extension: ${extension}"
+   case ${extension} in
+      ps)   ${v_PS}   ${fullfile} ;;
+      pdf)  ${v_PDF}  ${fullfile} ;;
+      djvu) ${v_DJV}  ${fullfile} ;;
+      jpg)  ${v_JPG}  ${fullfile} ;;
+      png)  ${v_PNG}  ${fullfile} ;;
+      gif)  ${v_GIF}  ${fullfile} ;;
+      svg)  ${v_SVG}  ${fullfile} ;;
+      fig)  ${v_FIG}  ${fullfile} ;;
+      epub) ${v_EPUB} ${fullfile} ;;
+      doc)  ${v_DOC}  ${fullfile} ;;
+      odt)  ${v_DOC}  ${fullfile} ;;
+   esac
+done
