@@ -1,7 +1,7 @@
 ## By Tim Dudgeon, using rdkit.
 ## https://gist.github.com/tdudgeon/b061dc67f9d879905b50118408c30aac
 ##
-## Usage: conf_gen.py <sdf input> <num conformers> <max attempts> <prune threshold> <cluster method: (RMSD|TFD) = RMSD> <cluster threshold = 0.2> <minimize iterations: = 0>
+## Usage: conf_gen.py <sdf input> <num conformers> <max attempts=1000> <prune threshold=0.1> <cluster method: (RMSD|TFD) = RMSD> <cluster threshold = 0.2> <minimize iterations: = 0>
 
 import sys
 from rdkit import Chem
@@ -54,13 +54,15 @@ def align_conformers(mol, clust_ids):
 	return rmslist
 		
 	
-if len(sys.argv) < 4:
+if len(sys.argv) < 3:
 	print "Usage: conf_gen.py <sdf input> <num conformers> <max attempts> <prune threshold> <cluster method: (RMSD|TFD) = RMSD> <cluster threshold = 0.2> <minimize iterations: = 0>"
 	exit()
 input_file = sys.argv[1]
 numConfs = int(sys.argv[2])
-maxAttempts = int(sys.argv[3])
-pruneRmsThresh = float(sys.argv[4])
+if len(sys.argv) > 3: maxAttempts = int(sys.argv[3])
+else: maxAttempts = 1000
+if len(sys.argv) > 4: pruneRmsThresh = float(sys.argv[4])
+else: pruneRmsThresh = 0.1
 if len(sys.argv) > 5: clusterMethod = sys.argv[5]
 else: clusterMethod = "RMSD"
 if len(sys.argv) > 6: clusterThreshold = float(sys.argv[6])
@@ -84,7 +86,7 @@ for mol in suppl:
 	# cluster the conformers
 	rmsClusters = cluster_conformers(m, clusterMethod, clusterThreshold)
 
-	print "Molecule", i, ": generated", len(conformerIds), "conformers and", len(rmsClusters), "clusters"
+	## print "Molecule", i, ": generated", len(conformerIds), "conformers and", len(rmsClusters), "clusters"
 	rmsClustersPerCluster = []
 	clusterNumber = 0
 	minEnergy = 9999999999999
@@ -99,6 +101,7 @@ for mol in suppl:
 			props["cluster_no"] = clusterNumber
 			props["cluster_centroid"] = cluster[0] + 1
 			idx = cluster.index(conformerId)
+                        print '%d %.10f' % (idx,e)
 			if idx > 0:
 				props["rms_to_centroid"] = rmsWithinCluster[idx-1]
 			else:
