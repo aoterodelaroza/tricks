@@ -1,8 +1,13 @@
 #! /usr/bin/awk -f
 
-# usage: gout2in.awk bleh.log bleh.gjf > new.gjf
+BEGIN{
+    if (ARGC != 3){
+	print "Usage: gout2in.awk bleh.log bleh.gjf"
+	exit
+    }
+}
 
-(FILENAME==ARGV[1]) && /orientation: *$/{
+(FILENAME==ARGV[1]) && (/Standard orientation: *$/ || /Input orientation: *$/) {
     gotnew = 1
     nat = 0
     getline; getline; getline; getline; getline
