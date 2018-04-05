@@ -1,6 +1,7 @@
 #! /usr/bin/awk -f
 
 BEGIN{
+    RS="\r\n|\n"
     if (ARGC != 3){
 	print "Usage: gout2in.awk bleh.log bleh.gjf"
 	exit
