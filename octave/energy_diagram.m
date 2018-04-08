@@ -10,11 +10,12 @@
 % FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
 % more details.
 
-function energy_diagram(g,type,label,
-                pos=1:length(g),ybuf = [1 4],xoff=0.1,ydlabel=1.5,bcolors={"000000","FF0000"})
-  %% function energy_diagram(g,type,label,pos=1:length(g),ybuf = [1 4],xoff=0.1,ydlabel=1.5,bcolors={"000000","FF0000"})
+function energy_diagram(name,g,type,label,
+                pos=1:length(g),ybuf = [2.5 4],xoff=0.1,ydlabel=1.5,bcolors={"000000","FF0000"})
+  %% function energy_diagram(name,g,type,label,pos=1:length(g),ybuf = [2.5 4],xoff=0.1,ydlabel=1.5,bcolors={"000000","FF0000"})
   %%
   %% Create a reaction free energy profile from calculated free energies.
+  %% name - Name of the tex/pdf file
   %% g - Free energies in Hartree (vector, length n).
   %% type - Types of species: 1 = stable, 2 = ts. (vector, length n)
   %% label - Label for each species (cell array, length n).
@@ -26,7 +27,7 @@ function energy_diagram(g,type,label,
   g = (g - min(g)) * 627.50947;
 
   printf("set terminal cairolatex pdf standalone font ',14'\n");
-  printf("set output 'plot.tex'\n");
+  printf("set output '%s.tex'\n",name);
   printf("set encoding iso_8859_1\n");
   printf("\n");
   printf("set style line 1 lc rgb '#%s' lw 6\n",bcolors{1});
@@ -64,18 +65,13 @@ function energy_diagram(g,type,label,
           label{i},pos(i)-0.5,i);
   endfor
   printf("\n");
+  printf("## numeric labels\n");
+  for i = 1:length(g)
+    printf("set label '\\scshape\\scriptsize\\bfseries %+.2f' at %.10f, g%d-ydlabel center\n",
+           g(i),pos(i)-0.5,i);
+  endfor
+  printf("\n");
   printf("f(x) = 9999999\n");
   printf("plot f(x) \n");
 endfunction
 
-g_a  = -368.181117 -337.670729;
-g_b  = -368.181568 -337.670729;
-g_ab = -368.173875 -337.670729;
-g_c  = g_b;
-g_d  = g_a;
-g_ad = -705.809050;
-g_bc = -705.806147;
-
-energy([g_d g_ad g_a g_ab g_b g_bc g_c],
-       [1,2,1,2,1,2,1],
-       {"(?)","AD$^{\\ddag}$","A","AB$^{\\ddag}$","B","BC$^{\\ddag}$","C","(?)"});
