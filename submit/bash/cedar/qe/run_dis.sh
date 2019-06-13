@@ -44,7 +44,7 @@ mpirun -np ${nmpi} \${QE_HOME}/bin/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan
 export OMP_NUM_THREADS=1
 module load gcc/6.4.0
 module load openblas/0.2.20
-mpirun -np ${nmpi} /home/alberto/src/wannier90-2.1.0/wannier90.x ${i}.win > ${i}.wout.2
+/home/alberto/src/wannier90-2.1.0/wannier90.x ${i}.win > ${i}.wout.2
 
 module load intel
 module load fftw
