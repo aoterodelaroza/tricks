@@ -35,6 +35,7 @@ sbatchadd=""
 ## location of the source scripts, and local name
 location="~/git/tricks/submit/bash/${cluster}"
 localname="local.sh"
+jobext="sub"
 
 printusage(){
     cat <<EOF
@@ -143,9 +144,9 @@ main() {
 	if ((n == npack)) ; then
 	    m=$((m+1))
 	    if ((npack > 1)) ; then
-		name=$(basename $PWD)_${m}.sub
+		name=$(basename $PWD)_${m}.${jobext}
 	    else
-		name=${i}.sub
+		name=${i}.${jobext}
 	    fi
 	    n=0
 	    echo $(pwd)/${name}
