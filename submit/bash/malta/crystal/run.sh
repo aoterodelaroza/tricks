@@ -2,7 +2,7 @@
 
 run(){
 	cat >&3 <<EOM
-runmpi17 12 ${i}
+runmpi17 12 ${i} ${AMP}
 
 EOM
 }

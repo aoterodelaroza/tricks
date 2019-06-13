@@ -1,7 +1,6 @@
 #! /bin/bash
 
 #### program and run options ####
-header="p8"
 what="qe"
 variant="qe6"
 runlist="basic density" ## basic density phonons dis bands opt hubbard
@@ -25,6 +24,9 @@ clean=""
 # sbatchadd=""
 
 cluster="malta"
+header="p8"
+#header="p12"
+#header="sub"
 nomp="8"
 nmpi="8"
 sbatchadd=""
@@ -32,7 +34,7 @@ sbatchadd=""
 #### INPUT ENDS HERE ####
 
 ## location of the source scripts, and local name
-location="~/toupload/bash/${cluster}"
+location="~/git/tricks/submit/bash/${cluster}"
 localname="local.sh"
 
 printusage(){
