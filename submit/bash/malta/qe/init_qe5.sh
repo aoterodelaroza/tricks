@@ -10,7 +10,5 @@ export ESPRESSO_HOME=/opt/uovi/alberto/espresso-5.3.0
 export ESPRESSO_TMPDIR=\${TMPDIR}
 export PATH=\$ESPRESSO_HOME/bin:\$PATH
 
-cd $(pwd)/${i}
-
 EOM
 }

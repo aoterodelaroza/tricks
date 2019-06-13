@@ -60,25 +60,17 @@ EOF
 }
 
 function writelocal(){
-    if [ -z "${variant}" ] ; then
-	grep -v '^#' ${location}/header.sh > ${localname}
-    else
-	grep -v '^#' ${location}/header.sh > ${localname}
-    fi
-    if [ -z "${variant}" ] ; then
-	grep -v '^#' ${location}/${what}/init.sh >> ${localname}
-    else
-	grep -v '^#' ${location}/${what}/init_${variant}.sh >> ${localname}
-    fi
-    grep -v '^#' ${location}/${what}/list.sh >> ${localname}
+    grep -v '^#' ${location}/header_${header}.sh > ${localname}
+    grep -v '^#' ${location}/${what}/init_${variant}.sh >> ${localname}
+    grep -v '^#' ${location}/${what}/list_.sh >> ${localname}
     if [ -z "${runlist}" ] ; then
-	grep -v '^#' ${location}/${what}/run.sh >> ${localname}
+	grep -v '^#' ${location}/${what}/run_.sh >> ${localname}
     else
 	for i in $runlist ; do 
 	    grep -v '^#' ${location}/${what}/run_${i}.sh >> ${localname}
 	done
     fi
-    grep -v '^#' ${location}/${what}/clean.sh >> ${localname}
+    grep -v '^#' ${location}/${what}/clean_${clean}.sh >> ${localname}
 }
 
 function check_and_source(){
@@ -86,13 +78,8 @@ function check_and_source(){
 	test -f "${location}/${1}.sh" || { echo "ERROR: ${location}/${1}.sh not found"; exit 1; }
 	. ${location}/${1}.sh
     else
-	if [ -z "$3" ] ; then
-	    test -f "${location}/${1}/${2}.sh" || { echo "ERROR: ${location}/${1}/${2}.sh not found"; exit 1; }
-	    . ${location}/${1}/${2}.sh
-	else
-	    test -f "${location}/${1}/${2}_${3}.sh" || { echo "ERROR: ${location}/${1}/${2}_${3}.sh not found"; exit 1; }
-	    . ${location}/${1}/${2}_${3}.sh
-	fi
+	test -f "${location}/${1}/${2}.sh" || { echo "ERROR: ${location}/${1}/${2}.sh not found"; exit 1; }
+	. ${location}/${1}/${2}.sh
     fi
 }
 
@@ -142,7 +129,7 @@ main() {
     n=$((npack-1))
 
     # build list of systems
-    list
+    list_
     if [ -z "$list" ]; then
 	echo "ERROR: the list is empty (extension=${extension})"
 	exit 1
@@ -174,18 +161,10 @@ main() {
 	    exec 3> $name
 
 	    ## write the header
-	    if [ -z "${header}" ]; then
-		header
-	    else
-		header_${header}
-	    fi
+	    header_${header}
 
 	    ## initialization code
-	    if [ -z "${variant}" ]; then
-		init
-	    else
-		init_${variant}
-	    fi
+	    init_${variant}
 	fi
 
 	## go to the correct directory
@@ -197,7 +176,7 @@ main() {
 
 	## run the calculation
 	if [ -z "${runlist}" ] ; then
-	    run
+	    run_
 	else
 	    for i in $runlist ; do 
 		run_${i}
@@ -205,9 +184,7 @@ main() {
 	fi
 
 	## clean up
-	if [ -n "${clean}" ] ; then
-	    clean
-	fi
+	clean_${clean}
     done
 
     if [ -n "${par}" ] ; then
@@ -219,21 +196,17 @@ main() {
 ## check the source scripts exist and read them
 eval location=$location
 test -d "${location}/${what}" || { echo "ERROR: ${location}/${what} dir not found"; exit 1; }
-if [ -z "${header}" ]; then
-    check_and_source "header"
-else
-    check_and_source "header_${header}"
-fi
-check_and_source "${what}" "init" "${variant}"
-check_and_source "${what}" "list"
+check_and_source "header_${header}"
+check_and_source "${what}" "init_${variant}"
+check_and_source "${what}" "list_"
 if [ -z "${runlist}" ] ; then
-    check_and_source "${what}" "run"
+    check_and_source "${what}" "run_"
 else
     for i in $runlist ; do 
-	check_and_source "${what}" "run" "${i}"
+	check_and_source "${what}" "run_${i}"
     done
 fi
-check_and_source "${what}" "clean"
+check_and_source "${what}" "clean_${clean}"
 
 ## run the thing
 main "$@"
