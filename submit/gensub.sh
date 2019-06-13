@@ -178,8 +178,8 @@ main() {
 	if [ -z "${runlist}" ] ; then
 	    run_
 	else
-	    for i in $runlist ; do 
-		run_${i}
+	    for j in $runlist ; do 
+		run_${j}
 	    done
 	fi
 
