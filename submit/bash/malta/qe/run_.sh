@@ -1,4 +1,4 @@
-!#! /bin/bash
+#! /bin/bash
 
 run_(){
     cat >&3 <<EOM

@@ -1,4 +1,4 @@
-!#! /bin/bash
+#! /bin/bash
 
 run_dis(){
     cat >&3 <<EOM

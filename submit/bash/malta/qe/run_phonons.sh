@@ -1,4 +1,4 @@
-!#! /bin/bash
+#! /bin/bash
 
 run_phonons(){
     cat >&3 <<EOM

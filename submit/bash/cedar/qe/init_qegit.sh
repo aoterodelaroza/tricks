@@ -1,4 +1,4 @@
-!#! /bin/bash
+#! /bin/bash
 
 init_qegit(){
     cat >&3 <<EOM
