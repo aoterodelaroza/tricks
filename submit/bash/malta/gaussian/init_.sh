@@ -10,7 +10,7 @@ export GAUSS_SCRDIR=\$TMPDIR
 ## postg
 export POSTG_HOME=/opt/uovi/alberto/postg
 export PATH=\${PATH}:\${POSTG_HOME}
-export OMP_NUM_THREADS=${nomp}
+export OMP_NUM_THREADS=${ncpu}
 
 EOM
 }

@@ -3,11 +3,11 @@
 run_dis(){
     cat >&3 <<EOM
 ##xx## For DIs:
-mpirun -np ${nmpi} pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-mpirun -np ${nmpi} pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-mpirun -np ${nmpi} pw.x < ${i}.scf.in > ${i}.scf.out
-mpirun -np ${nmpi} pp.x < ${i}.rho.in > ${i}.rho.out
-mpirun -np ${nmpi} open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+mpirun -np ${ncpu} pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+mpirun -np ${ncpu} pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+mpirun -np ${ncpu} pw.x < ${i}.scf.in > ${i}.scf.out
+mpirun -np ${ncpu} pp.x < ${i}.rho.in > ${i}.rho.out
+mpirun -np ${ncpu} open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -39,7 +39,7 @@ module load openblas/0.2.20
 /home/alberto/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
 
 module load intel/2017
-mpirun -np ${nmpi} \${QE_HOME}/bin/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+mpirun -np ${ncpu} \${QE_HOME}/bin/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
 module load gcc/6.4.0
@@ -51,7 +51,7 @@ module load fftw
 \${QE_HOME}/bin/pw2critic.x < ${i}.pw2critic.in > ${i}.pw2critic.out
 
 module load gcc/6.4.0
-export OMP_NUM_THREADS=${nmpi}
+export OMP_NUM_THREADS=${ncpu}
 export CRITIC_HOME=/home/alberto/git/critic2
 export OMP_STACKSIZE=128M
 \${CRITIC_HOME}/src/critic2 ${i}.cri ${i}.cro

@@ -7,7 +7,7 @@ header_(){
 #PBS -j eo
 #PBS -e $(pwd)/${i}.err 
 #PBS -N ${prefix}-${i}
-#PBS -l walltime=${walltime},mem=${mem},nodes=1:ppn=${nomp}
+#PBS -l walltime=${walltime},mem=${mem},nodes=1:ppn=${ncpu}
 #PBS -m n
 #PBS ${sbatchadd}
 

@@ -1,4 +1,4 @@
-#! /bin/bash
+!#! /bin/bash
 
 init_(){
     cat >&3 <<EOM

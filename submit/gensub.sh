@@ -10,25 +10,24 @@ clean=""
 
 #### cluster info ####
 # cluster="cedar"
+# header="mpi"
+# #header="omp"
 # walltime="28-00:00"
-# nmpi="32"
-# nomp="1"
 # mem="4000M"
+# ncpu="32"
 # sbatchadd=""
 # 
 # cluster="orcinus"
 # walltime="240:00:00"
 # mem="8GB"
-# nomp="4"
-# nmpi="4"
 # sbatchadd=""
+# ncpu="4"
 
 cluster="malta"
 header="p8"
 #header="p12"
 #header="sub"
-nomp="8"
-nmpi="8"
+ncpu="8"
 sbatchadd=""
 
 #### INPUT ENDS HERE ####

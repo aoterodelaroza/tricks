@@ -1,13 +1,13 @@
-#! /bin/bash
+!#! /bin/bash
 
 run_dis(){
     cat >&3 <<EOM
 ##xx## For DIs:
-/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np $NCORE \$ESPRESSO_HOME/bin/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np $NCORE \$ESPRESSO_HOME/bin/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np $NCORE \$ESPRESSO_HOME/bin/pw.x < ${i}.scf.in > ${i}.scf.out
-/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np $NCORE \$ESPRESSO_HOME/bin/pp.x < ${i}.rho.in > ${i}.rho.out
-/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np $NCORE \$ESPRESSO_HOME/bin/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np ${ncpu} \$ESPRESSO_HOME/bin/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np ${ncpu} \$ESPRESSO_HOME/bin/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np ${ncpu} \$ESPRESSO_HOME/bin/pw.x < ${i}.scf.in > ${i}.scf.out
+/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np ${ncpu} \$ESPRESSO_HOME/bin/pp.x < ${i}.rho.in > ${i}.rho.out
+/opt/openmpi/1.8.4/bin/mpirun --mca btl_sm_use_knem 0 --mca btl_vader_single_copy_mechanism none -np ${ncpu} \$ESPRESSO_HOME/bin/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -38,7 +38,7 @@ echo "end kpoints" >> ${i}.win
 mv ${i}.wout ${i}.wout.1
 mv ${i}.werr ${i}.werr.1
 
-/opt/openmpi/1.8.4/bin/mpirun -np $NCORE \$ESPRESSO_HOME/bin/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+/opt/openmpi/1.8.4/bin/mpirun -np ${ncpu} \$ESPRESSO_HOME/bin/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 /opt/uovi/alberto/wannier90-2.0.1/wannier90.x ${i}.win > ${i}.wout
 mv ${i}.wout ${i}.wout.2

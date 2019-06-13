@@ -16,7 +16,7 @@ header_p12(){
 
 . /opt/modules/3.2.10/Modules/3.2.10/init/bash
 
-export OMP_NUM_THREADS=${nomp}
+export OMP_NUM_THREADS=${ncpu}
 export MKL_NUM_THREADS=1
 
 EOM
