@@ -34,7 +34,7 @@ sbatchadd=""
 
 ## location of the source scripts, and local name
 location="~/git/tricks/submit/bash/${cluster}"
-localname="local.sh"
+localname="${0%.sh}_local.sh"
 jobext="sub"
 
 printusage(){
