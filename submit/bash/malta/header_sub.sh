@@ -8,7 +8,7 @@ header_sub(){
 #PBS -j eo
 #PBS -e $(pwd)/${i}.err 
 #PBS -N ${prefix}-${i}
-#PBS -l nodes=1:n_alberto:ppn=${ncpu}
+#PBS -l nodes=1:ppn=${ncpu}
 #PBS -m n
 #PBS -V
 #PBS ${sbatchadd}
