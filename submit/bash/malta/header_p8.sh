@@ -11,7 +11,6 @@ header_p8(){
 #@ environment = COPY_ALL
 #@ node       = 1
 #@ tasks_per_node = 8
-#@ ${sbatchadd}
 #@ queue
 
 . /opt/modules/3.2.10/Modules/3.2.10/init/bash

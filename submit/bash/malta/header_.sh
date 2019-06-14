@@ -4,7 +4,7 @@ header_(){
 	cat >&3 <<EOM
 #! /bin/bash
 #PBS -S /bin/bash
-#PBS -q batch2
+#PBS -q batch
 #PBS -j eo
 #PBS -e $(pwd)/${i}.err 
 #PBS -N ${prefix}-${i}
