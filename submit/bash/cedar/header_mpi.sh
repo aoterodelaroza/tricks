@@ -1,6 +1,6 @@
 #! /bin/bash
 
-header_(){
+header_mpi(){
 	cat >&3 <<EOM
 #! /bin/bash
 #SBATCH -t ${walltime}

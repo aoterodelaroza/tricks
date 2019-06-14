@@ -1,6 +1,6 @@
 #! /bin/bash
 
-header_omp(){
+header_(){
 	cat >&3 <<EOM
 #! /bin/bash
 #SBATCH -t ${walltime}
@@ -9,8 +9,8 @@ header_omp(){
 #SBATCH -o ${i}.out
 #SBATCH -e ${i}.err
 #SBATCH -N 1 
-#SBATCH -n 1
-#SBATCH -c ${ncpu}
+#SBATCH -n ${ncpu}
+#SBATCH -c 1
 #SBATCH --mem-per-cpu=${mempercpu}
 #SBATCH --account=ctb-dilabiog
 #SBATCH ${sbatchadd}
