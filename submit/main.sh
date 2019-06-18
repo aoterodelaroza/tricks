@@ -1,42 +1,5 @@
 #! /bin/bash
 
-#### program and run options ####
-what="qe"
-variant="qe6"
-runlist="basic density" ## basic density phonons dis bands opt hubbard
-clean=""
-#what="gaussian"
-#what="crystal"
-
-#### cluster info ####
-# cluster="cedar"
-# header="mpi"
-# #header="omp"
-# walltime="28-00:00"
-# mem="4000M"
-# ncpu="32"
-# sbatchadd=""
-# 
-# cluster="orcinus"
-# walltime="240:00:00"
-# mem="8GB"
-# sbatchadd=""
-# ncpu="4"
-
-cluster="malta"
-header="p8"
-#header="p12"
-#header="sub"
-ncpu="8"
-sbatchadd=""
-
-#### INPUT ENDS HERE ####
-
-## location of the source scripts, and local name
-location="~/git/tricks/submit/bash/${cluster}"
-localname="${0%.sh}_local.sh"
-jobext="sub"
-
 printusage(){
     cat <<EOF
 
@@ -50,6 +13,7 @@ printusage(){
 EOF
     echo "## List of script generators:"
     echo "header='$(ls -d ${location}/*.sh | rev | cut -f 1 -d / | rev | grep -v header.sh | cut -f 2 -d _ | cut -f 1 -d . | tr '\n' ' ' | sed 's/[[:space:]]*$//g')'"
+    echo ""
     listwhat=$(ls -d ${location}/*/ | rev | cut -f 2 -d / | rev | tr '\n' ' ' | sed 's/[[:space:]]*$//g')
     for i in $listwhat ; do
 	echo "what='$i'"
