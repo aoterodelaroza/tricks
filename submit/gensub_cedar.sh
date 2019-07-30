@@ -20,6 +20,11 @@ header='omp'
 variant=''
 runlist=''
 
+what='psi4'
+header='omp'
+variant=''
+runlist=''
+
 what='qe'
 header='mpi'
 variant='qe6' ## qe6 myqe6 qegit
