@@ -19,7 +19,7 @@ variant='qe6' ## qe5 qe4 qe6 qegit
 runlist='basic' ## basic opt hubbard density phonons bands dis
 
 #what='psi4'
-#variant='' ## git module
+#variant='' ## git module gitnew modulenew
 #runlist=''
 #
 #what='gaussian'
