@@ -20,6 +20,11 @@ variant=""
 runlist="" 
 clean="" 
 
+what="crystal"
+variant="" 
+runlist="" 
+clean="" 
+
 #### END OF INPUT ####
 
 dirloc="~/git/tricks/submit"
