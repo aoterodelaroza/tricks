@@ -12,8 +12,10 @@ header="mpi" ## mpi, omp
 
 what="qe"
 variant="qe6" ## qe6 qegit
-runlist="basic" ## basic opt density ...
-clean="" ## no-opts
+runlist="basic" ## basic opt phonons phstart phrun phend density hubbard bands dis...
+clean="" ## noclean
+#runlist="phstart phrun phend" 
+#clean="noclean"
 
 what="psi4"
 variant="" 
