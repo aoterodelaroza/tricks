@@ -2,8 +2,7 @@
 
 init_qegit(){
     cat >&3 <<EOM
-module load gcc/5.4.0
-module load intel-mkl/2019.3.199
+module load gcc/9.1.0
 module load openmpi/3.1.4
 
 export OMP_NUM_THREADS=1
