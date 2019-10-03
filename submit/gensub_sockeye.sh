@@ -3,7 +3,7 @@
 ## cluster details
 cluster="sockeye"
 walltime="10:00:00"
-mem="8GB"
+mem="144GB"
 sbatchadd=""
 ncpu="32"
 
@@ -12,9 +12,9 @@ header="mpi" ## mpi, omp
 
 what="qe"
 variant="qe6" ## qe6 qegit
-runlist="basic" ## basic opt phonons phstart phrun phend density hubbard bands dis...
+runlist="basic" ## basic opt density ...
 clean="" ## noclean
-#runlist="phstart phrun phend" 
+#runlist="phstart|phrun|phend" 
 #clean="noclean"
 
 what="psi4"

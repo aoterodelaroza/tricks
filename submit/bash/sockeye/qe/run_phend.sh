@@ -6,6 +6,7 @@ run_phend(){
     cat >&3 <<EOM
 export ESPRESSO_TMPDIR=.
 sed '/&inputph/a\ recover=.true.,' ${i}.ph.in > ${i}.ph.in_end
+rm -f _ph0/*.recover* > /dev/null
 
 mpiexec --mca mpi_cuda_support 0 ph.x < ${i}.ph.in_end > ${i}.ph.out_end
 
