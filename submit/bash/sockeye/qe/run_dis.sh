@@ -3,11 +3,11 @@
 run_dis(){
     cat >&3 <<EOM
 ##xx## For DIs:
-mpiexec --mca mpi_cuda_support 0 pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-mpiexec --mca mpi_cuda_support 0 pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-mpiexec --mca mpi_cuda_support 0 pw.x < ${i}.scf.in > ${i}.scf.out
-mpiexec --mca mpi_cuda_support 0 pp.x < ${i}.rho.in > ${i}.rho.out
-mpiexec --mca mpi_cuda_support 0 open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+mpiexec --mca mpi_cuda_support 0 pw.x < ${i}.pawscf.in > ${i}.pawscf.out 2>&1
+mpiexec --mca mpi_cuda_support 0 pp.x < ${i}.rhoae.in > ${i}.rhoae.out 2>&1
+mpiexec --mca mpi_cuda_support 0 pw.x < ${i}.scf.in > ${i}.scf.out 2>&1
+mpiexec --mca mpi_cuda_support 0 pp.x < ${i}.rho.in > ${i}.rho.out 2>&1
+mpiexec --mca mpi_cuda_support 0 open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out 2>&1
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -39,7 +39,7 @@ module load openblas/0.2.20
 /home/alberto/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
 
 module load intel/2017
-mpiexec --mca mpi_cuda_support 0 \${QE_HOME}/bin/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+mpiexec --mca mpi_cuda_support 0 \${QE_HOME}/bin/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out 2>&1
 
 export OMP_NUM_THREADS=1
 module load gcc/6.4.0

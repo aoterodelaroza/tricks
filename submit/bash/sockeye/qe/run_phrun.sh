@@ -33,7 +33,7 @@ if [ \$count -gt 0 ] && [ ! -z \$njob ]; then
     export ESPRESSO_TMPDIR=.
 
     sed "/&inputph/a\ start_q=\${njob},\n\ last_q=\${njob}," ${i}.ph.in > ${i}.ph.in_\${njob}
-    mpiexec --mca mpi_cuda_support 0 ph.x < ${i}.ph.in_\${njob} > ${i}.ph.out_\${njob}
+    mpiexec --mca mpi_cuda_support 0 ph.x < ${i}.ph.in_\${njob} > ${i}.ph.out_\${njob} 2>&1
 
     cp -f ${i}.ph.out_\${njob} ${this}/${i}/
     cp -f _ph0/crystal.phsave/dynmat.\${njob}.*.xml ${this}/${i}/_ph0/crystal.phsave/
