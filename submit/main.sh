@@ -24,17 +24,17 @@ EOF
 }
 
 function writelocal(){
-    grep -v '^#' ${location}/header_${header}.sh > ${localname}
-    grep -v '^#' ${location}/${what}/init_${variant}.sh >> ${localname}
-    grep -v '^#' ${location}/${what}/list_.sh >> ${localname}
+    cat ${location}/header_${header}.sh > ${localname}
+    cat ${location}/${what}/init_${variant}.sh >> ${localname}
+    cat ${location}/${what}/list_.sh >> ${localname}
     if [ -z "${runlist}" ] ; then
-	grep -v '^#' ${location}/${what}/run_.sh >> ${localname}
+	cat ${location}/${what}/run_.sh >> ${localname}
     else
 	for i in $runlist ; do 
-	    grep -v '^#' ${location}/${what}/run_${i}.sh >> ${localname}
+	    cat ${location}/${what}/run_${i}.sh >> ${localname}
 	done
     fi
-    grep -v '^#' ${location}/${what}/clean_${clean}.sh >> ${localname}
+    cat ${location}/${what}/clean_${clean}.sh >> ${localname}
 }
 
 function check_and_source(){

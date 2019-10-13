@@ -17,6 +17,7 @@ header_p12(){
 
 export OMP_NUM_THREADS=${ncpu}
 export MKL_NUM_THREADS=1
+export TMPDIR=\${SCRATCH}
 
 EOM
 }
