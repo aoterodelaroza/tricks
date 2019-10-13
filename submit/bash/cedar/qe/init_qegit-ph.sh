@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_qegit(){
+init_qegit-ph(){
     cat >&3 <<EOM
 unset I_MPI_PMI_LIBRARY
 export OMP_NUM_THREADS=1
