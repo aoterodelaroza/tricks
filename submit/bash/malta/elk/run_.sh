@@ -2,7 +2,7 @@
 
 run_(){
 	cat >&3 <<EOM
-/home/alberto/src/elk-4.3.6/src/elk 2>&1 > elk.out ${AMP}
+/opt/uovi/alberto/elk-6.3.2/src/elk 2>&1 > elk.out ${AMP}
 
 EOM
 }
