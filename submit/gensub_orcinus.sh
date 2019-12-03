@@ -9,8 +9,8 @@ ncpu="4"
 
 ## calc details
 header="" ## no-opts
-what="qe"
-variant="" ## no-opts
+what="qe" 
+variant="qe6" ## qe6 qegit
 runlist="basic" ## basic opt density ...
 clean="" ## no-opts
 
