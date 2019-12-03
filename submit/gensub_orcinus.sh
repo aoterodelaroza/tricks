@@ -12,6 +12,12 @@ header="" ## no-opts
 what="qe" 
 variant="qe6" ## qe6 qegit
 runlist="basic" ## basic opt density ...
+
+## header="" ## no-opts
+## what="gaussian" 
+## variant="" 
+## runlist="" 
+
 clean="" ## no-opts
 
 #### END OF INPUT ####
