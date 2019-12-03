@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_(){
+init_qegit(){
     cat >&3 <<EOM
 module load intel
 export ESPRESSO_HOME=/home/alberto/git/espresso
