@@ -12,6 +12,8 @@ mpirun -np ${ncpu} open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
 num_iter = 20000
+conv_tol = 1e-4
+conv_window = 3
 
 begin unit_cell_cart
 bohr
