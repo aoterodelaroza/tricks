@@ -52,11 +52,10 @@ module load intel
 module load fftw
 \${QE_HOME}/bin/pw2critic.x < ${i}.pw2critic.in > ${i}.pw2critic.out
 
-module load gcc/6.4.0
 export OMP_NUM_THREADS=${ncpu}
 export CRITIC_HOME=/home/alberto/git/critic2
 export OMP_STACKSIZE=128M
-\${CRITIC_HOME}/src/critic2 ${i}.cri ${i}.cro
+/home/alberto/bin/critic2 ${i}.cri ${i}.cro
 
 EOM
 }
