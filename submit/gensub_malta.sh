@@ -16,7 +16,7 @@ ncpu="8"
 ## calc details
 what='qe'
 variant='qe6' ## qe5 qe4 qe6 qe65thermo qegit
-runlist='basic' ## basic thermo opt hubbard density phonons bands dis dos
+runlist='basic' ## basic thermo neb opt hubbard density phonons bands dis dos
 
 #what='psi4'
 #variant='' ## git module gitnew modulenew
@@ -42,7 +42,7 @@ runlist='basic' ## basic thermo opt hubbard density phonons bands dis dos
 #variant=''
 #runlist=''
 
-clean="" ## no-opts
+clean="" ## no-opts noclean
 
 #### END OF INPUT ####
 

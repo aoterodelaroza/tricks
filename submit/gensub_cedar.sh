@@ -1,7 +1,5 @@
 #! /bin/bash
 
-#! /bin/bash
-
 ## cluster details
 cluster="cedar"
 walltime="28-00:00"
