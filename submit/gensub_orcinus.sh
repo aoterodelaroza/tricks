@@ -10,7 +10,7 @@ ncpu="4"
 ## calc details
 header="" ## no-opts
 what="qe" 
-variant="qe6" ## qe6 qegit
+variant="qemodule" ## qemodule qegit qe61 qe65thermo
 runlist="basic" ## basic opt density ...
 
 ## header="" ## no-opts
