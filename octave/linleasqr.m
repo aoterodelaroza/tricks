@@ -9,6 +9,15 @@ function [m b sm sb] = linleasqr(x,y,wy=[],wx=[],r=[])
   %% Reduces to simple linear least-squares fit if wy = wx = r = [].
   %% Returns slope (m), intercept (b), and the uncertainties of slope
   %% (sigma_m) and intercept (sigma_b).
+  %%
+  %% References:
+  %% R. J. Cvetanovic, D. L. Singleton, Comment on the evaluation of the Arrhenius parameters by the least squares method, Int. J. Chem. Kin. 9 (1977) 481.
+  %% York et al., Unified equations for the slope, intercept, and standard errors of the best straight line, Am. J. Phys., 72 (2004) 367.
+  %% C. A. Cantrell, Technical note: review of methods for linear least-squares fitting of data and application to atmospheric chemistry problems, Atmos. Chem. Phys. 8 (2008) 5477
+  %% R. J. Cvetanovic et al., Evaluations of the mean values and standard errors of rate constantes and their temperature coefficients, J. Phys. Chem. 83 (1979) 50
+  %% Faith A. Morrison, Obtaining uncertainty measures on slope and intercept of a least squares fit with excel's LINEST.
+  %% R.E. Deakin and M.N. Hunter, Fitting a line of best fit to correlated data of varying precision
+  
 
   %% sanity check
   x = x(:);
@@ -43,9 +52,6 @@ function [m b sm sb] = linleasqr(x,y,wy=[],wx=[],r=[])
 
   m = suv / su2;
   b = ym - m * xm;
-
-  ## sm = sqrt(1 / su2);
-  ## sb = sqrt(1 / sw + xm.^2 * sm);
 
   sse = sum(wy .* (y - m * x - b).^2);
   sm = sqrt(sse / su2 / (n-2));
