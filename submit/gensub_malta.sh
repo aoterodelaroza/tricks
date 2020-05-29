@@ -39,7 +39,7 @@ runlist='basic' ## basic thermo neb opt hubbard density phonons bands dis dos
 #runlist=''
 #
 #what='vasp'
-#variant=''
+#variant='' ## 5-4-4 5-4-1 5-2 5-3-3 4-6
 #runlist=''
 
 clean="" ## no-opts noclean
