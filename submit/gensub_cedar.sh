@@ -26,9 +26,9 @@ runlist=''
 what='qe'
 header='mpi'
 variant='qe6' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
-runlist='basic' ## basic opt thermo hubbard density phonons bands dis
+runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
 
-clean="" ## no-opts
+clean="" ## no-opts noclean
 
 #### END OF INPUT ####
 
