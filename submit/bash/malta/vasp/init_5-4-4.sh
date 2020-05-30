@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_5-4-1(){
+init_5-4-4(){
     cat >&3 <<EOM
 module load intel/15.2
 module load mkl/15.2
