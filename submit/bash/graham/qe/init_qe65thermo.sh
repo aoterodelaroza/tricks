@@ -7,7 +7,7 @@ export MKL_NUM_THREADS=1
 export ESPRESSO_TMPDIR=\${SLURM_TMPDIR}
 export CRITIC_HOME="/home/alberto/git/critic2"
 
-module load intel/2019.3
+module load intel
 module load fftw
 export ESPRESSO_HOME=/home/alberto/src/espresso-6.5_thermo
 export PATH=\$PATH:\${ESPRESSO_HOME}/bin
