@@ -12,7 +12,7 @@ header_mpi(){
 #SBATCH -n ${ncpu}
 #SBATCH -c 1
 #SBATCH --mem-per-cpu=${mempercpu}
-#SBATCH --account=ctb-dilabiog
+#SBATCH --account=${account}
 #SBATCH ${sbatchadd}
 
 EOM
