@@ -48,7 +48,8 @@ mv ${i}.werr ${i}.werr.2
 
 \$ESPRESSO_HOME/bin/pw2critic.x < ${i}.pw2critic.in > ${i}.pw2critic.out
 
-/home/alberto/bin/critic2 ${i}.cri ${i}.cro
+. /home/alberto/intel/bin/compilervars.sh intel64
+/home/alberto/git/critic2/src/critic2 ${i}.cri ${i}.cro
 
 EOM
 }
