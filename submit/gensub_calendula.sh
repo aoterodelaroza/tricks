@@ -4,7 +4,7 @@
 cluster="calendula"
 
 ## number of cpus
-ncpu="8"
+ncpu="4"
 
 ## calc details
 what='qe'
