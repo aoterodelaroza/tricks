@@ -38,7 +38,7 @@ echo "end kpoints" >> ${i}.win
 
 module load gcc/6.4.0
 module load openblas/0.2.20
-/home/alberto/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
+$HOME/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
 
 module load intel/2017
 srun -n \$SLURM_NTASKS --mpi=pmi2  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
@@ -46,16 +46,16 @@ srun -n \$SLURM_NTASKS --mpi=pmi2  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw
 export OMP_NUM_THREADS=1
 module load gcc/6.4.0
 module load openblas/0.2.20
-/home/alberto/src/wannier90-2.1.0/wannier90.x ${i}.win > ${i}.wout.2
+$HOME/src/wannier90-2.1.0/wannier90.x ${i}.win > ${i}.wout.2
 
 module load intel
 module load fftw
 \$A/pw2critic.x < ${i}.pw2critic.in > ${i}.pw2critic.out
 
 export OMP_NUM_THREADS=${ncpu}
-export CRITIC_HOME=/home/alberto/git/critic2
+export CRITIC_HOME=$HOME/git/critic2
 export OMP_STACKSIZE=128M
-/home/alberto/bin/critic2 ${i}.cri ${i}.cro
+$HOME/bin/critic2 ${i}.cri ${i}.cro
 
 EOM
 }
