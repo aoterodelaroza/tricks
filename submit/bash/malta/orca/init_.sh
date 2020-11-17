@@ -1,0 +1,16 @@
+#! /bin/bash
+
+init_(){
+    cat >&3 <<EOM
+## orca
+module load openmpi/2.0.2
+export LD_LIBRARY_PATH=/home/alberto/src/orca_4_0_1/:\$LD_LIBRARY_PATH
+export PATH=/home/alberto/src/orca_4_0_1/:\$PATH
+
+## postg
+export POSTG_HOME=/opt/uovi/alberto/postg
+export PATH=\${PATH}:\${POSTG_HOME}
+export OMP_NUM_THREADS=${ncpu}
+
+EOM
+}
