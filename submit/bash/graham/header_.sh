@@ -11,8 +11,8 @@ header_(){
 #SBATCH -N 1 
 #SBATCH -n ${ncpu}
 #SBATCH -c 1
-#SBATCH --mem-per-cpu=${mempercpu}
-#SBATCH --account=${account}
+#SBATCH --mem=${mem}
+#SBATCH --account=def-dilabiog-ac
 #SBATCH ${sbatchadd}
 
 EOM

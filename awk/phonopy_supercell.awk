@@ -36,6 +36,9 @@ ARGIND==1 && /ATOMIC_POSITIONS/{
 	latpos[j] = $0
     }
 }
+ARGIND==2 && /^ *prefix *=/{
+    print " tprnfor=.true.,"
+}
 ARGIND==2 && /^ *nat *=/{
     gsub("^ *nat *=","")
     nat1 = $0+0
