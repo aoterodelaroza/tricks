@@ -23,7 +23,7 @@ runlist='basic' ## basic thermo neb opt hubbard density phonons bands dis dos
 #runlist=''
 #
 #what='gaussian'
-#variant=''
+#variant='g16' ## g09 g16
 #runlist=''
 #
 #what='aimall'
