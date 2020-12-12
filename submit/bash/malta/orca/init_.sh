@@ -4,8 +4,8 @@ init_(){
     cat >&3 <<EOM
 ## orca
 module load openmpi/2.0.2
-export LD_LIBRARY_PATH=/home/alberto/src/orca_4_0_1/:\$LD_LIBRARY_PATH
-export PATH=/home/alberto/src/orca_4_0_1/:\$PATH
+export LD_LIBRARY_PATH=/home/alberto/src/orca_4_2_0/:\$LD_LIBRARY_PATH
+export PATH=/home/alberto/src/orca_4_2_0/:\$PATH
 
 ## postg
 export POSTG_HOME=/opt/uovi/alberto/postg

@@ -4,7 +4,7 @@ run_(){
 	cat >&3 <<EOM
 cp -f ${i}.inp \${TMPDIR}
 cd \${TMPDIR}
-/home/alberto/src/orca_4_0_1/orca ${i}.inp > ${i}.out ${AMP}
+/home/alberto/src/orca_4_2_0/orca ${i}.inp > ${i}.out ${AMP}
 orca_2mkl ${i} -molden
 mv ${i}.molden.input ${i}.molden
 xz ${i}.gbw ${i}.molden
