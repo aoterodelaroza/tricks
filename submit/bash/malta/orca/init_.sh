@@ -9,6 +9,7 @@ export LD_LIBRARY_PATH=/home/alberto/src/orca_4_2_0/:\$LD_LIBRARY_PATH
 export PATH=/home/alberto/src/orca_4_2_0/:\$PATH
 
 ## postg
+module load gcc/9.1.0
 export POSTG_HOME=/opt/uovi/alberto/postg
 export PATH=\${PATH}:\${POSTG_HOME}
 export OMP_NUM_THREADS=${ncpu}

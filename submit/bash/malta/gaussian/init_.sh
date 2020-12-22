@@ -8,6 +8,7 @@ export g16root=/home/alberto/src
 export GAUSS_SCRDIR=\$TMPDIR
 
 ## postg
+module load gcc/9.1.0
 export POSTG_HOME=/opt/uovi/alberto/postg
 export PATH=\${PATH}:\${POSTG_HOME}
 export OMP_NUM_THREADS=${ncpu}
