@@ -10,10 +10,10 @@ kcalmol2J = cal2J / NA * 1000;
 kjmol2J = 1 / NA * 1000;
 hz2J = 6.62607015e-34;
 thz2J = hz2J * 1e12;
+K2J = 1.380649e-23;
 
-
-xrow = [ha2J, ev2J, invcm2J, kcalmol2J, kjmol2J, 1, hz2J, thz2J];
-names = {"Hartree","eV","cm-1","kcal/mol","kJ/mol","J","Hz","THz"};
+xrow = [ha2J, ev2J, invcm2J, kcalmol2J, kjmol2J, 1, hz2J, K2J];
+names = {"Hartree","eV","cm-1","kcal/mol","kJ/mol","J","Hz","K"};
 
 printf("| %20s |","");
 for i = 1:length(names)
