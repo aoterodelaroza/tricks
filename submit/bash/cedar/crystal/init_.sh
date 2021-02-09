@@ -5,7 +5,10 @@ init_(){
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 
+module --force purge
+module load nixpkgs/16.09
 module load intel/2014.6
+module load openmpi/2.1.1
 
 export CRY17_ROOT="/home/alberto/src/crystal17"
 export CRY17_BIN="bin"
