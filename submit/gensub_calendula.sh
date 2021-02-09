@@ -7,9 +7,13 @@ cluster="calendula"
 ncpu="4"
 
 ## calc details
-what='qe'
-variant='qe65thermo' ## qe65thermo qe66module
-runlist='basic' ## basic thermo neb opt hubbard density phonons bands dis dos
+what='orca'
+variant='' ## 
+runlist='' ## 
+
+# what='qe'
+# variant='qe65thermo' ## qe65thermo qe66module
+# runlist='basic' ## basic thermo neb opt hubbard density phonons bands dis dos
 
 clean="" ## no-opts noclean
 
