@@ -2,7 +2,7 @@
 
 run_(){
 	cat >&3 <<EOM
-g09 ${i}.gjf ${AMP}
+\${GAUPROGRAM} ${i}.gjf ${AMP}
 
 EOM
 }

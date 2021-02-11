@@ -3,7 +3,7 @@
 ## cluster details
 cluster="cedar"
 account="ctb-dilabiog" # ctb-dilabiog (priority) | def-dilabiog-ac (normal)
-walltime="28-00:00" # 3:00:00 | 12:00:00 | 1-00:00 | 3-00:00 | 7-00:00 | 28-00:00
+walltime="28-00:00"
 mempercpu="4000M"
 ncpu="32"
 sbatchadd=""
@@ -25,6 +25,10 @@ variant=''
 runlist=''
 
 what='elk'
+variant=''
+runlist=''
+
+what='aimall'
 variant=''
 runlist=''
 

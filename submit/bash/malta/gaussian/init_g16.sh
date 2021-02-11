@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_(){
+init_g16(){
     cat >&3 <<EOM
 ## g16
 export g16root=/home/alberto/src
