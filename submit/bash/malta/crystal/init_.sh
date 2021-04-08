@@ -2,6 +2,7 @@
 
 init_(){
     cat >&3 <<EOM
+export OMP_NUM_THREADS=1
 export CRY17_ROOT="/opt/uovi/alberto/crystal17"
 export CRY17_BIN="bin"
 export CRY17_ARCH="Linux-ifort"

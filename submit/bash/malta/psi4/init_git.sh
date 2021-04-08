@@ -5,7 +5,6 @@ init_git(){
 module load python/3.7.4
 module load intel/15.3
 module load mkl/15.3
-module load gcc/9.1.0
 module load libxc/4.3.4
 module load postg/master
 

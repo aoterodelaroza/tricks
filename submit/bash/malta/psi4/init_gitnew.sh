@@ -7,7 +7,6 @@ source /opt/rh/devtoolset-8/enable
 module load intel/15.3 
 module load mkl/15.3 
 module load postg/master 
-module load gcc/9.1.0
 
 export PSI_SCRATCH=\${TMPDIR}
 export PATH=/opt/uovi/alberto/psi4-new/bin/:\${PATH}
