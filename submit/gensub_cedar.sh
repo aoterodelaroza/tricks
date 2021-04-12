@@ -2,7 +2,7 @@
 
 ## cluster details
 cluster="cedar"
-account="ctb-dilabiog" # ctb-dilabiog (priority) | def-dilabiog-ac (normal)
+account="ctb-dilabiog" # ctb-dilabiog (priority) | rrg-dilabiog-ad (allocation)
 walltime="28-00:00"
 mempercpu="4000M"
 ncpu="32"

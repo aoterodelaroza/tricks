@@ -5,7 +5,6 @@ header_(){
 #! /bin/bash
 #SBATCH -t ${walltime}
 #SBATCH -J ${prefix}-${i}
-#SBATCH -D $(pwd)
 #SBATCH -o ${i}.out
 #SBATCH -e ${i}.err
 #SBATCH -N 1 
