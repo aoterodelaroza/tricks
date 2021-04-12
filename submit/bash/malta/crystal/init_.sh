@@ -2,6 +2,9 @@
 
 init_(){
     cat >&3 <<EOM
+module load openmpi/1.6.5
+
+export OMP_NUM_THREADS=1
 export CRY17_ROOT="/opt/uovi/alberto/crystal17"
 export CRY17_BIN="bin"
 export CRY17_ARCH="Linux-ifort"
