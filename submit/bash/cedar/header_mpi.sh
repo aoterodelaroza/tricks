@@ -14,5 +14,7 @@ header_mpi(){
 #SBATCH --account=${account}
 #SBATCH ${sbatchadd}
 
+rm -r \${SLURM_TMPDIR}/*
+
 EOM
 }
