@@ -32,6 +32,10 @@ what='aimall'
 variant=''
 runlist=''
 
+what='dftbp'
+variant=''
+runlist=''
+
 what='qe'
 header='mpi'
 variant='qe6' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
