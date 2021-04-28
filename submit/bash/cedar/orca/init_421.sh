@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_(){
+init_421(){
     cat >&3 <<EOM
 module load StdEnv/2020
 module load gcc/9.3.0
