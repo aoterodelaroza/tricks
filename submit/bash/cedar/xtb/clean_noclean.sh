@@ -1,8 +1,7 @@
 #! /bin/bash
 
-clean_(){
+clean_noclean(){
     cat >&3 <<EOM
-    rm -f timer.dat
 
 EOM
 }
