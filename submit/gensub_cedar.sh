@@ -41,6 +41,11 @@ header=''
 variant='gfn1' ## gfn1 gfn2
 runlist='opt' ## basic opt
 
+what='orca'
+header=''
+variant='' ## myorca 421
+runlist=''
+
 what='qe'
 header='mpi'
 variant='qe6' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph

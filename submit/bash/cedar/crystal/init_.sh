@@ -7,8 +7,8 @@ export MKL_NUM_THREADS=1
 
 module --force purge
 module load nixpkgs/16.09
-module load intel/2014.6
-module load openmpi/2.1.1
+module load intel/2019.3
+module load openmpi
 
 export CRY17_ROOT="/home/alberto/src/crystal17"
 export CRY17_BIN="bin"
