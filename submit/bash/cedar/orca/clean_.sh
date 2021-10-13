@@ -2,7 +2,7 @@
 
 clean_(){
     cat >&3 <<EOM
-rm -f \${i}.tmp* \${i}_property.txt \${i}.prop \${i}.gbw
+rm -f ${i}.tmp* ${i}_property.txt ${i}.prop ${i}.gbw
 
 EOM
 }
