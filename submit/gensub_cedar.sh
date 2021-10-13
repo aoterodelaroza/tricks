@@ -19,6 +19,11 @@ header='omp'
 variant=''
 runlist=''
 
+what='qe'
+header='mpi'
+variant='qe6' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
+runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
+
 what='psi4'
 header='omp'
 variant=''
@@ -46,10 +51,10 @@ header=''
 variant='' ## myorca 421
 runlist=''
 
-what='qe'
-header='mpi'
-variant='qe6' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
-runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
+what='mrcc'
+header=''
+variant=''
+runlist=''
 
 clean="" ## no-opts noclean
 
