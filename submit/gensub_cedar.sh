@@ -13,45 +13,55 @@ what='crystal'
 header='mpi'
 variant=''
 runlist=''
+clean=''
 
 what='gaussian'
 header='omp'
 variant=''
 runlist=''
+clean='' ## <empty> acpterms
 
 what='psi4'
 header='omp'
 variant=''
 runlist=''
+clean=''
 
 what='elk'
+header='omp'
 variant=''
 runlist=''
+clean=''
 
 what='aimall'
+header='omp'
 variant=''
 runlist=''
+clean=''
 
 what='dftbp'
+header='omp'
 variant=''
 runlist=''
+clean=''
 
 what='xtb'
-header=''
+header='omp'
 variant='gfn1' ## gfn1 gfn2
 runlist='opt' ## basic opt
+clean='' ## <emtpy> noclean
 
 what='orca'
-header=''
+header='omp'
 variant='' ## myorca 421
 runlist=''
+clean=''
 
 what='qe'
 header='mpi'
 variant='qe6' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
 runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
-
-clean="" ## no-opts noclean
+clean='' ## <empty> noclean
 
 #### END OF INPUT ####
 
