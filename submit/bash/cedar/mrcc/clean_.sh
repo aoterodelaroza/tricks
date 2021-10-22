@@ -1,0 +1,8 @@
+#! /bin/bash
+
+clean_(){
+    cat >&3 <<EOM
+rm -f 55 fort.* FOCK EXIT DFINT DAO iface KEYWD *.restart *.perm MOCOEF* MOLDEN* OCCUP OEINT OSVFILE PRINT SCFDENSITIES* SCHOL SROOT SYMTRA TEDAT TEINT VARS MINP
+
+EOM
+}
