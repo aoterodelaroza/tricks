@@ -18,7 +18,7 @@ clean=''
 what='gaussian'
 header='omp'
 variant=''
-runlist='pack' ## <empty> pack
+runlist='' ## <empty> pack
 clean='' ## <empty> acpterms
 
 what='qe'
