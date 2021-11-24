@@ -14,7 +14,7 @@ header_(){
 #SBATCH --account=${account}
 #SBATCH ${sbatchadd}
 
-rm -r \${SLURM_TMPDIR}/*
+rm \${SLURM_TMPDIR}/*
 export PATH=./:~/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin
 
 EOM
