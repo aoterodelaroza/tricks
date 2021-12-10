@@ -49,6 +49,10 @@ runlist='basic' ## basic thermo neb opt hubbard density phonons bands dis dos
 #what='critic2'
 #variant=''
 #runlist=''
+#
+#what='fhiaims'
+#variant=''
+#runlist=''
 
 clean="" ## no-opts noclean
 
