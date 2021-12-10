@@ -3,6 +3,7 @@
 init_(){
     cat >&3 <<EOM
 export OMP_NUM_THREADS=1
+ulimit -s unlimited
 
 module load intel/15.2
 module load mkl/15.2
