@@ -24,6 +24,12 @@ sbatchadd=""
 # variant='qe65thermo' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
 # runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
 # clean='' ## <empty> noclean
+#
+what='ase'
+header='mpi'
+variant='aims' ## aims
+runlist=''
+clean=''
 
 #### END OF INPUT ####
 
