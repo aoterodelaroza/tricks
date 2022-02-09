@@ -12,6 +12,12 @@ sbatchadd=""
 # variant=''
 # runlist='' ## <empty> pack
 # clean='' ## <empty> acpterms
+#
+# what='fhiaims'
+# header='mpi'
+# variant=''
+# runlist=''
+# clean=''
 
 #### END OF INPUT ####
 
