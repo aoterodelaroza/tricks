@@ -17,8 +17,8 @@ ulimit -s unlimited
 export PYTHONPATH=/home/alberto/git/ase:\$PYTHONPATH
 export PATH=/home/alberto/git/ase/bin:\$PATH
 
-export ASE_AIMS_COMMAND='srun /home/alberto/src/FHIaims_XDM/build/aims.210513.scalapack.mpi.x'
-export AIMS_SPECIES_DIR='/home/alberto/src/FHIaims_XDM/species_defaults/lightdense'
+export ASE_AIMS_COMMAND='mpirun /opt/software/FHIaims_XDM/bin/aims.220115.scalapack.mpi.x'
+export AIMS_SPECIES_DIR='/opt/software/FHIaims_XDM/species_defaults/lightdense'
 
 EOM
 }

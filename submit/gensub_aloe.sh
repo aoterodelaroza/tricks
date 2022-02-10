@@ -25,11 +25,12 @@ sbatchadd=""
 # runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
 # clean='' ## <empty> noclean
 #
-what='ase'
-header='mpi'
-variant='aims' ## aims
-runlist=''
-clean=''
+# what='ase'
+# header='mpi'
+# variant='aims' ## aims
+# runlist=''
+# clean=''
+# 
 
 #### END OF INPUT ####
 
