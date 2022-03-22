@@ -36,26 +36,20 @@ echo "begin kpoints" >> ${i}.win
 awk '/List to be put/,/^ *$/' ${i}.opengrid.out | grep -v List | grep -v '^ *$' >> ${i}.win
 echo "end kpoints" >> ${i}.win
 
-module load gcc/6.4.0
-module load openblas/0.2.20
-/home/alberto/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
+/opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
+mv ${i}.wout ${i}.wout.1
 
-module load intel/2017
 mpirun -np ${ncpu} \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
-module load gcc/6.4.0
-module load openblas/0.2.20
-/home/alberto/src/wannier90-2.1.0/wannier90.x ${i}.win > ${i}.wout.2
+/opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
+mv ${i}.wout ${i}.wout.2
 
-module load intel
-module load fftw
 \$A/pw2critic.x < ${i}.pw2critic.in > ${i}.pw2critic.out
 
 export OMP_NUM_THREADS=${ncpu}
 export CRITIC_HOME=/home/alberto/git/critic2
-export OMP_STACKSIZE=128M
-/home/alberto/bin/critic2 ${i}.cri ${i}.cro
+/opt/software/critic2/bin/critic2 ${i}.cri ${i}.cro
 
 EOM
 }
