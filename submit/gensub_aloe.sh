@@ -22,7 +22,7 @@ sbatchadd=""
 # what='fhiaims'
 # header='mpi'
 # variant=''
-# runlist=''
+# runlist='basic' ## basic bfgs_critic2
 # clean=''
 #
 # what='qe'
