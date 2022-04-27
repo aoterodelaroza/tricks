@@ -7,6 +7,12 @@ ncpu="20"
 sbatchadd=""
 
 # ## calc details
+# what='orca'
+# header='mpi'
+# variant=''
+# runlist=''
+# clean=''
+#
 # what='gaussian'
 # header='omp'
 # variant=''
@@ -22,7 +28,7 @@ sbatchadd=""
 # what='qe'
 # header='mpi'
 # variant='qe65thermo' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
-# runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
+# runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis bfgs_critic2
 # clean='' ## <empty> noclean
 #
 # what='ase'
@@ -30,7 +36,6 @@ sbatchadd=""
 # variant='aims' ## aims
 # runlist=''
 # clean=''
-# 
 
 #### END OF INPUT ####
 
