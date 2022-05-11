@@ -2,10 +2,9 @@
 
 init_(){
     cat >&3 <<EOM
-module load StdEnv/2020
-module load gcc/9.3.0
-module load openmpi/4.0.3
-module load orca/4.2.1
+module load openmpi
+export PATH=/home/alberto/src/orca_5_0_3/:\$PATH
+export LD_LIBRARY_PATH=/home/alberto/src/orca_5_0_3/:\$LD_LIBRARY_PATH
 
 EOM
 }
