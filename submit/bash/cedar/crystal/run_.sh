@@ -10,7 +10,7 @@ run_(){
 cp -f ${i}.fort.34 fort.34
 cp -f ${i}.d12 INPUT
 
-mpirun -np ${ncpu} ~/src/crystal17/bin/Linux-ifort/Pcrystal < ${i}.d12 >& ${i}.out ${AMP}
+mpirun -np \$SLURM_NTASKS ~/src/crystal17/bin/Linux-ifort/Pcrystal < ${i}.d12 >& ${i}.out ${AMP}
 
 #cp -f ${i}.out $(pwd)/${i}
 #cp -f \$(ls -v optc* | tail -n 1) $(pwd)/${i}

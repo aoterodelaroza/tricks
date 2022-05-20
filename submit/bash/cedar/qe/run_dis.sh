@@ -3,11 +3,11 @@
 run_dis(){
     cat >&3 <<EOM
 ##xx## For DIs:
-mpirun -np ${ncpu} \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-mpirun -np ${ncpu} \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-mpirun -np ${ncpu} \$A/pw.x < ${i}.scf.in > ${i}.scf.out
-mpirun -np ${ncpu} \$A/pp.x < ${i}.rho.in > ${i}.rho.out
-mpirun -np ${ncpu} \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+mpirun -np \$SLURM_NTASKS \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+mpirun -np \$SLURM_NTASKS \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+mpirun -np \$SLURM_NTASKS \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+mpirun -np \$SLURM_NTASKS \$A/pp.x < ${i}.rho.in > ${i}.rho.out
+mpirun -np \$SLURM_NTASKS \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -41,7 +41,7 @@ module load openblas/0.2.20
 /home/alberto/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
 
 module load intel/2017
-mpirun -np ${ncpu} \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+mpirun -np \$SLURM_NTASKS \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
 module load gcc/6.4.0
@@ -52,7 +52,7 @@ module load intel
 module load fftw
 \$A/pw2critic.x < ${i}.pw2critic.in > ${i}.pw2critic.out
 
-export OMP_NUM_THREADS=${ncpu}
+export OMP_NUM_THREADS=\$SLURM_NTASKS
 export CRITIC_HOME=/home/alberto/git/critic2
 export OMP_STACKSIZE=128M
 /home/alberto/bin/critic2 ${i}.cri ${i}.cro
