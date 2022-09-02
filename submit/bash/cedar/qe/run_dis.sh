@@ -36,16 +36,12 @@ echo "begin kpoints" >> ${i}.win
 awk '/List to be put/,/^ *$/' ${i}.opengrid.out | grep -v List | grep -v '^ *$' >> ${i}.win
 echo "end kpoints" >> ${i}.win
 
-module load gcc/6.4.0
-module load openblas/0.2.20
 /home/alberto/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
 
 module load intel/2017
 mpirun -np \$SLURM_NTASKS \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
-module load gcc/6.4.0
-module load openblas/0.2.20
 /home/alberto/src/wannier90-2.1.0/wannier90.x ${i}.win > ${i}.wout.2
 
 module load intel
