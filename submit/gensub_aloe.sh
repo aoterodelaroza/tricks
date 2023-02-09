@@ -36,6 +36,12 @@ sbatchadd=""
 # variant='aims' ## aims
 # runlist=''
 # clean=''
+#
+# what='mrcc'
+# header='omp'
+# variant=''
+# runlist=''
+# clean=''
 
 #### END OF INPUT ####
 
