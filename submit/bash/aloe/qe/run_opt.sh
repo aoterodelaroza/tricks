@@ -8,13 +8,13 @@ cp -f ${i}.scf.out ${i}.scf.out1
 
 /home/alberto/bin/pwout2in.awk ${i}.scf.out ${i}.scf.in > bleh.in
 mv bleh.in ${i}.scf.in
-mpirun -np ${ncpu} \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+mpirun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
 cp -f ${i}.scf.in ${i}.scf.in2
 cp -f ${i}.scf.out ${i}.scf.out2
 
 /home/alberto/bin/pwout2in.awk ${i}.scf.out ${i}.scf.in > bleh.in
 mv bleh.in ${i}.scf.in
-mpirun -np ${ncpu} \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+mpirun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
 cp -f ${i}.scf.in ${i}.scf.in3
 cp -f ${i}.scf.out ${i}.scf.out3
 

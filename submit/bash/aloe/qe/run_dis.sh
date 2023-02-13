@@ -3,11 +3,11 @@
 run_dis(){
     cat >&3 <<EOM
 ##xx## For DIs:
-mpirun -np ${ncpu} \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-mpirun -np ${ncpu} \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-mpirun -np ${ncpu} \$A/pw.x < ${i}.scf.in > ${i}.scf.out
-mpirun -np ${ncpu} \$A/pp.x < ${i}.rho.in > ${i}.rho.out
-mpirun -np ${ncpu} \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+mpirun  \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+mpirun  \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+mpirun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+mpirun  \$A/pp.x < ${i}.rho.in > ${i}.rho.out
+mpirun  \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -39,7 +39,7 @@ echo "end kpoints" >> ${i}.win
 /opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
 mv ${i}.wout ${i}.wout.1
 
-mpirun -np ${ncpu} \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+mpirun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
 /opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
