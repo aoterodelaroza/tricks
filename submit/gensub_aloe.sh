@@ -8,37 +8,37 @@ sbatchadd=""
 
 # ## calc details
 # what='orca'
-# header='mpi'
+# header='mpi' # exclusive
 # variant=''
 # runlist=''
 # clean=''
 #
 # what='gaussian'
-# header='omp'
+# header='omp' # exclusive
 # variant=''
 # runlist='' ## <empty> pack
 # clean='' ## <empty> acpterms
 #
 # what='fhiaims'
-# header='mpi'
+# header='mpi' # exclusive
 # variant=''
 # runlist='basic' ## basic bfgs_critic2
 # clean=''
 #
 # what='qe'
-# header='mpi'
+# header='mpi' # exclusive
 # variant='qe65thermo' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
 # runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis bfgs_critic2
 # clean='' ## <empty> noclean
 #
 # what='ase'
-# header='mpi'
+# header='mpi' # exclusive
 # variant='aims' ## aims
 # runlist=''
 # clean=''
 #
 # what='mrcc'
-# header='omp'
+# header='omp' # exclusive
 # variant=''
 # runlist=''
 # clean=''
