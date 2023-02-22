@@ -42,6 +42,12 @@ sbatchadd=""
 # variant=''
 # runlist=''
 # clean=''
+#
+# what='vasp'
+# header='mpi' # exclusive
+# variant=''
+# runlist=''
+# clean=''
 
 #### END OF INPUT ####
 
