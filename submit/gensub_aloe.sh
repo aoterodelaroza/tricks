@@ -48,6 +48,13 @@ sbatchadd=""
 # variant=''
 # runlist=''
 # clean=''
+#
+# what='psi4'
+# header='omp' # exclusive
+# variant=''
+# runlist=''
+# clean=''
+#
 
 #### END OF INPUT ####
 
