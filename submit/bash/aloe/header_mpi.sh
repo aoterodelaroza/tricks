@@ -7,7 +7,7 @@ header_mpi(){
 #SBATCH -o ${i}.out
 #SBATCH -e ${i}.err
 #SBATCH -N ${nnode}
-#SBATCH -n ${ncpu}
+#SBATCH --ntasks-per-node ${ncpu}
 #SBATCH -c 1
 #SBATCH ${sbatchadd}
 

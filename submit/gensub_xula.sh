@@ -2,17 +2,22 @@
 
 ## cluster details
 cluster="xula"
-
-## number of cpus
+walltime="3-00:00"
+nnode="1"
 ncpu="40"
 
 ## calc details
-
+# what='fhiaims'
+# header='mpi'
+# variant='' # old
+# runlist=''
+# clean=''
+#
 # what='qe'
+# header='mpi'
 # variant='' ## qe65thermo
 # runlist='basic' ## basic thermo neb opt hubbard density phonons bands dis dos
-
-clean="" ## no-opts noclean
+# clean=''
 
 #### END OF INPUT ####
 

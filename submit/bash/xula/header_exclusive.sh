@@ -1,6 +1,6 @@
 #! /bin/bash
 
-header_(){
+header_exclusive(){
 	cat >&3 <<EOM
 #! /bin/bash
 #SBATCH --job-name=${prefix}-${i}
@@ -9,8 +9,7 @@ header_(){
 #SBATCH --partition=xulares
 #SBATCH --qos=a
 #SBATCH -N ${nnode}
-#SBATCH -c 1
-#SBATCH --ntasks-per-node ${ncpu}
+#SBATCH --exclusive
 #SBATCH --time=3-00:00:00
 
 EOM
