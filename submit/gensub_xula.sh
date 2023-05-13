@@ -7,6 +7,12 @@ nnode="1"
 ncpu="40"
 
 ## calc details
+# what='orca'
+# header='mpi'
+# variant=''
+# runlist=''
+# clean=''
+#
 # what='fhiaims'
 # header='mpi'
 # variant='' # old
