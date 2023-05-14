@@ -7,6 +7,7 @@ module load openmpi-4.1.1-gcc-8.2.0-5crd33z
 module load intel-mkl-2020.0.166-gcc-8.2.0-5sobnda
 module load fftw-3.3.8-gcc-8.2.0-kcqedoo
 
+export OMPI_MCA_btl=^openib
 export UCX_LOG_LEVEL=error
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
