@@ -2,8 +2,11 @@
 
 run_(){
 	cat >&3 <<EOM
-\$(which orca) ${i}.inp 2>&1 > ${i}.out ${AMP}
-# xz ${i}.gbw
+cp -f ${i}.inp ${i}.xyz \${SLURM_TMPDIR}
+cd \${SLURM_TMPDIR}
+\$(which orca) ${i}.inp 2>&1 > $(pwd)/${i}.out ${AMP}
+rm -f ${i}.*
+cd $(pwd)
 
 EOM
 }

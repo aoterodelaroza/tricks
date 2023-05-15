@@ -58,7 +58,7 @@ sbatchadd=""
 # clean='' ## <emtpy> noclean
 #
 # what='orca'
-# header='omp'
+# header='mpi'
 # variant='' ## myorca 421
 # runlist=''
 # clean=''
@@ -77,7 +77,7 @@ sbatchadd=""
 #
 # what='fhiaims'
 # header='mpi'
-# variant=''
+# variant='' # old
 # runlist=''
 # clean=''
 #

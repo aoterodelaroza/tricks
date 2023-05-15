@@ -4,10 +4,10 @@ header_mpi(){
 	cat >&3 <<EOM
 #! /bin/bash
 #SBATCH -J ${prefix}-${i}
-#SBATCH -o ${i}.out
-#SBATCH -e ${i}.err
+#SBATCH -o ${i}.sout
+#SBATCH -e ${i}.serr
 #SBATCH -N ${nnode}
-#SBATCH -n ${ncpu}
+#SBATCH --ntasks-per-node ${ncpu}
 #SBATCH -c 1
 #SBATCH ${sbatchadd}
 

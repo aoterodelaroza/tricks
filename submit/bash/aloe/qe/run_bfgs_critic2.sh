@@ -18,7 +18,7 @@ while true ; do
     mv new.scf.in this.scf.in
 
     ## run it and generate the calc file
-    mpirun -np ${ncpu} \$A/pw.x < this.scf.in > ${i}.scf.out 
+    mpirun \$A/pw.x < this.scf.in > ${i}.scf.out 
     grep ! ${i}.scf.out  | awk '{print \$5}' > ${i}.calc
     grep -A 3 'total   stress' ${i}.scf.out  | tail -n 3 | awk '{print \$1,\$2,\$3}' >> ${i}.calc
     grep '   force =' ${i}.scf.out  | awk '{print \$7,\$8,\$9}' >> ${i}.calc

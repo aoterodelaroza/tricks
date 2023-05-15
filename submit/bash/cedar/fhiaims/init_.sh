@@ -12,5 +12,7 @@ export MKL_NUM_THREADS=1
 export MKL_DYNAMIC=FALSE
 ulimit -s unlimited
 
+FHIBIN=/home/alberto/src/FHIaims-220915_clean/build/aims.220915.mpi.x
+
 EOM
 }

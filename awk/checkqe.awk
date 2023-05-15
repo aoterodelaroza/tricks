@@ -10,6 +10,7 @@ FNR == 1{
     nstep = 0; qever = 0; v = 0; isvcrelax = 0; nat = 0; nelec = 0;
     nks = 0; ecutwfc = 0; ecutrho = 0; noptstep = 0; isopt = 0;
     isfinished = 0;
+    iswarnscf = 0;
 }
 /Program PWSCF/{
     qever = $3
@@ -47,6 +48,9 @@ FNR == 1{
 /^ *JOB DONE/{
     isfinished = 1
 }
+/SCF correction compared to forces is large/{
+    iswarnscf = 1
+}
 
 END{
     printinfo()
@@ -54,6 +58,8 @@ END{
 
 function printinfo(){
     printf("%d. %s (opt) : ",nfile, file)
+    if (iswarnscf)
+	printf("[WARN: low conv_thr] ")
     if (!scfconv[nstep]){
 	if (nstep > 1)
 	    last = e[nstep-1]
