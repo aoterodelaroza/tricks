@@ -1,5 +1,7 @@
 #! /bin/bash
 
 clean_(){
-    rm -f timer.dat
+    cat >&3 <<EOM
+rm -f timer.dat
+EOM
 }
