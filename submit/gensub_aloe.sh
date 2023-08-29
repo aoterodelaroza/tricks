@@ -3,7 +3,7 @@
 ## cluster details
 cluster="aloe"
 nnode="1"
-ncpu="20"
+ncpu="8"
 sbatchadd=""
 
 # ## calc details
