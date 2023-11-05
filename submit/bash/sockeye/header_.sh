@@ -3,12 +3,21 @@
 header_(){
 	cat >&3 <<EOM
 #! /bin/bash
-#PBS -l walltime=${walltime},select=1:ncpus=${ncpu}:ompthreads=${ncpu}:mem=${mem}
-#PBS -N ${prefix}-${i}
-#PBS -A st-dilabio-1
-#PBS -j eo
-#PBS -e $(pwd)/${i}.err 
-#PBS ${sbatchadd}
+#SBATCH -t ${walltime}
+#SBATCH -J ${prefix}-${i}
+#SBATCH -o ${i}.out
+#SBATCH -e ${i}.err
+#SBATCH -N 1
+#SBATCH --ntasks-per-node 1
+#SBATCH -c ${ncpu}
+#SBATCH --mem-per-cpu=${mempercpu}
+#SBATCH --account=${account}
+EOM
+	if [ -n "$partition" ] ; then
+	    echo "#SBATCH --partition=${partition}" >&3
+	fi
+	cat >&3 <<EOM
+#SBATCH ${sbatchadd}
 
 EOM
 }

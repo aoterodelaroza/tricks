@@ -2,10 +2,13 @@
 
 ## cluster details
 cluster="sockeye"
-walltime="7:00:00"
-mem="144GB"
+account="st-dilabio-1"
+partition="" ## skylake,cascade,...
+walltime="0-07:00:00"
+mempercpu="4000M"
 sbatchadd=""
 ncpu="32"
+sbatchadd=""
 
 # ## calc details
 # what="qe"
