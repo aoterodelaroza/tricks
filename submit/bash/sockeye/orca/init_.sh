@@ -7,6 +7,7 @@ module load openmpi/4.1.1-cuda11-3
 
 ## orca
 export LD_LIBRARY_PATH=/home/aoterode/src/orca_5_0_3:\$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=\$OPENMPI_ROOT/lib:\$LD_LIBRARY_PATH
 
 EOM
 }
