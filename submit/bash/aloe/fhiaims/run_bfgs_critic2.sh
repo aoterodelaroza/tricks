@@ -28,7 +28,7 @@ EOF
     sed -e '/^ *relax_geometry/d' -e '/^ *relax_unit_cell/d' control.in.orig >> control.in
 
     ## run it and generate the calc file
-    mpirun /opt/software/FHIaims-220915_clean/build/aims.220915.mpi.x < /dev/null > ${i}.out
+    mpirun /opt/software/FHIaims/bin/aims.230214.mpi.x < /dev/null > ${i}.out
 
     grep '| Electronic free energy' ${i}.out | tail -n 1  | awk '{printf "%.14f\n",\$6*0.073498644}' > ${i}.calc
     grep -A 7 'Analytical stress tensor - Symmetrized' ${i}.out  | tail -n 3 | awk '{printf "%.14f %.14f %.14f\n",-\$3*0.010891375,-\$4*0.010891375,-\$5*0.010891375}' >> ${i}.calc
