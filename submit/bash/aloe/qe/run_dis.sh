@@ -42,7 +42,7 @@ mv ${i}.wout ${i}.wout.1
 mpirun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
-/opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
+/opt/software/wannier90-2.1.0/wannier90.x ${i}.win
 mv ${i}.wout ${i}.wout.2
 
 \$A/pw2critic.x < ${i}.pw2critic.in > ${i}.pw2critic.out
