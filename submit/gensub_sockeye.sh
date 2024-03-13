@@ -4,7 +4,7 @@
 cluster="sockeye"
 account="st-dilabio-1"
 partition="" ## skylake,cascade,...
-walltime="0-07:00:00"
+walltime="1-00:00:00"
 mempercpu="4000M"
 sbatchadd=""
 ncpu="32"
@@ -16,6 +16,12 @@ sbatchadd=""
 # variant="qe65"
 # runlist="basic" ## basic opt phonons
 # clean="" ## noclean
+# 
+# what="fhiaims"
+# header="mpi"
+# variant=""
+# runlist=""
+# clean="" ## <empty> noclean
 # 
 # what="psi4"
 # header="omp"
