@@ -2,13 +2,12 @@
 
 run_phonons(){
     cat >&3 <<EOM
-##xx## For phonons: run ph.x and the rest of the programs
-mpiexec --mca mpi_cuda_support 0 ph.x < ${i}.ph.in > ${i}.ph.out
+mpirun ph.x < ${i}.ph.in > ${i}.ph.out
 if [ -f "${i}.dynmat.in" ]; then
-  mpiexec --mca mpi_cuda_support 0 dynmat.x < ${i}.dynmat.in > ${i}.dynmat.out 2>&1
+  mpirun dynmat.x < ${i}.dynmat.in > ${i}.dynmat.out 2>&1
 fi
-mpiexec --mca mpi_cuda_support 0 q2r.x < ${i}.q2r.in > ${i}.q2r.out 2>&1
-mpiexec --mca mpi_cuda_support 0 matdyn.x < ${i}.matdyn.in > ${i}.matdyn.out 2>&1
+mpirun q2r.x < ${i}.q2r.in > ${i}.q2r.out 2>&1
+mpirun matdyn.x < ${i}.matdyn.in > ${i}.matdyn.out 2>&1
 
 EOM
 }

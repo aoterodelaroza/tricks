@@ -13,8 +13,8 @@ sbatchadd=""
 # ## calc details
 # what="qe"
 # header="mpi"
-# variant="qe6" ## qe6 qegit
-# runlist="basic" ## basic opt density ...
+# variant="qe65"
+# runlist="basic" ## basic opt phonons
 # clean="" ## noclean
 # 
 # what="psi4"
