@@ -2,6 +2,7 @@
 
 init_(){
     cat >&3 <<EOM
+source /etc/profile
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 

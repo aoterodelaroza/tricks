@@ -2,6 +2,7 @@
 
 init_(){
     cat >&3 <<EOM
+source /etc/profile
 module load gcc/9.4.0
 module load openmpi/4.1.1-cuda11-3
 

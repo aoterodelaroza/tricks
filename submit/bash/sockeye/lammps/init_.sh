@@ -2,6 +2,7 @@
 
 init_(){
     cat >&3 <<EOM
+source /etc/profile
 module load gcc/5.4.0
 module load openmpi/3.1.4
 module load intel-mkl

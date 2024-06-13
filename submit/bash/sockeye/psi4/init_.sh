@@ -2,6 +2,7 @@
 
 init_(){
     cat >&3 <<EOM
+source /etc/profile
 module load gcc/5.4.0
 module load python/3.7.3
 module load intel-mkl/2019.3.199

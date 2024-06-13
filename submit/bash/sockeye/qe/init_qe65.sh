@@ -2,6 +2,7 @@
 
 init_qe65(){
     cat >&3 <<EOM
+source /etc/profile
 module load intel-oneapi-compilers
 module load intel-mkl
 module load openmpi/4.1.1-cuda11-3

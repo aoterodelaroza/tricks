@@ -2,6 +2,7 @@
 
 init_qe6(){
     cat >&3 <<EOM
+source /etc/profile
 module load gcc/9.1.0
 module load openmpi/3.1.4
 
