@@ -2,6 +2,23 @@
 
 run_bfgs_critic2(){
     cat >&3 <<EOM
+## trick for making MKL think this is an intel processor
+cat > trick.c <<EOF
+int mkl_serv_intel_cpu_true() {
+        return 1;
+}
+EOF
+gcc -shared -fPIC -o libtrick.so trick.c
+export LD_PRELOAD=./libtrick.so
+
+## instructions for MKL
+export MKL_DEBUG_CPU_TYPE=5
+export MKL_ENABLE_INSTRUCTIONS=AVX512
+
+## run with srun to prevent overlap
+export PMIX_MCA_psec=^munge
+export PMIX_MCA_gds=^shmem2
+
 ## initialize
 cp -f ${i}.scf.in this.scf.in
 cat > ${i}.cri <<EOF
@@ -18,7 +35,7 @@ while true ; do
     mv new.scf.in this.scf.in
 
     ## run it and generate the calc file
-    mpirun \$A/pw.x < this.scf.in > ${i}.scf.out 
+    srun \$A/pw.x < this.scf.in > ${i}.scf.out 
     grep ! ${i}.scf.out  | awk '{print \$5}' > ${i}.calc
     grep -A 3 'total   stress' ${i}.scf.out  | tail -n 3 | awk '{print \$1,\$2,\$3}' >> ${i}.calc
     grep '   force =' ${i}.scf.out  | awk '{print \$7,\$8,\$9}' >> ${i}.calc
@@ -34,5 +51,6 @@ while true ; do
 	break
     fi
 done
+rm -f trick.c libtrick.so
 EOM
 }

@@ -2,12 +2,29 @@
 
 run_dis(){
     cat >&3 <<EOM
+## trick for making MKL think this is an intel processor
+cat > trick.c <<EOF
+int mkl_serv_intel_cpu_true() {
+        return 1;
+}
+EOF
+gcc -shared -fPIC -o libtrick.so trick.c
+export LD_PRELOAD=./libtrick.so
+
+## instructions for MKL
+export MKL_DEBUG_CPU_TYPE=5
+export MKL_ENABLE_INSTRUCTIONS=AVX512
+
+## run with srun to prevent overlap
+export PMIX_MCA_psec=^munge
+export PMIX_MCA_gds=^shmem2
+
 ##xx## For DIs:
-mpirun  \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-mpirun  \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-mpirun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
-mpirun  \$A/pp.x < ${i}.rho.in > ${i}.rho.out
-mpirun  \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+srun  \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+srun  \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+srun  \$A/pp.x < ${i}.rho.in > ${i}.rho.out
+srun  \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -39,7 +56,7 @@ echo "end kpoints" >> ${i}.win
 /opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
 mv ${i}.wout ${i}.wout.1
 
-mpirun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+srun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
 /opt/software/wannier90-2.1.0/wannier90.x ${i}.win
@@ -50,6 +67,7 @@ mv ${i}.wout ${i}.wout.2
 export OMP_NUM_THREADS=${ncpu}
 export CRITIC_HOME=/home/alberto/git/critic2
 /opt/software/critic2/bin/critic2 ${i}.cri ${i}.cro
+rm -f trick.c libtrick.so
 
 EOM
 }

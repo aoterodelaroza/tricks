@@ -27,7 +27,7 @@ sbatchadd=""
 #
 # what='qe'
 # header='mpi' # exclusive
-# variant='qe65thermo' ## qe6 qe65thermo myqe6 myqe6-ph qegit qegit-ph
+# variant='qe65thermo qe731' ## qe65thermo qe731
 # runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis bfgs_critic2
 # clean='' ## <empty> noclean
 #
