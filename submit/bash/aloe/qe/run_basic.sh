@@ -9,7 +9,6 @@ int mkl_serv_intel_cpu_true() {
 }
 EOF
 gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=./libtrick.so
 
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
@@ -19,7 +18,7 @@ export MKL_ENABLE_INSTRUCTIONS=AVX512
 export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
-srun \$A/pw.x < ${i}.scf.in > ${i}.scf.out ${AMP}
+LD_PRELOAD=./libtrick.so srun \$A/pw.x < ${i}.scf.in > ${i}.scf.out ${AMP}
 rm -f trick.c libtrick.so
 
 EOM

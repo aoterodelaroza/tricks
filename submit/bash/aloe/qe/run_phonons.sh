@@ -9,7 +9,6 @@ int mkl_serv_intel_cpu_true() {
 }
 EOF
 gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=./libtrick.so
 
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
@@ -20,12 +19,12 @@ export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
 ##xx## For phonons: run ph.x and the rest of the programs
-srun  \$A/ph.x < ${i}.ph.in > ${i}.ph.out
+LD_PRELOAD=./libtrick.so srun  \$A/ph.x < ${i}.ph.in > ${i}.ph.out
 if [ -f "${i}.dynmat.in" ]; then
-  srun  \$A/dynmat.x < ${i}.dynmat.in > ${i}.dynmat.out
+  LD_PRELOAD=./libtrick.so srun  \$A/dynmat.x < ${i}.dynmat.in > ${i}.dynmat.out
 fi
-srun  \$A/q2r.x < ${i}.q2r.in > ${i}.q2r.out
-srun  \$A/matdyn.x < ${i}.matdyn.in > ${i}.matdyn.out
+LD_PRELOAD=./libtrick.so srun  \$A/q2r.x < ${i}.q2r.in > ${i}.q2r.out
+LD_PRELOAD=./libtrick.so srun  \$A/matdyn.x < ${i}.matdyn.in > ${i}.matdyn.out
 rm -f trick.c libtrick.so
 
 EOM

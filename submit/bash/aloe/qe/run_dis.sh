@@ -9,7 +9,6 @@ int mkl_serv_intel_cpu_true() {
 }
 EOF
 gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=./libtrick.so
 
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
@@ -20,11 +19,11 @@ export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
 ##xx## For DIs:
-srun  \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-srun  \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
-srun  \$A/pp.x < ${i}.rho.in > ${i}.rho.out
-srun  \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+LD_PRELOAD=./libtrick.so srun  \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+LD_PRELOAD=./libtrick.so srun  \$A/pp.x < ${i}.rho.in > ${i}.rho.out
+LD_PRELOAD=./libtrick.so srun  \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -56,7 +55,7 @@ echo "end kpoints" >> ${i}.win
 /opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
 mv ${i}.wout ${i}.wout.1
 
-srun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+LD_PRELOAD=./libtrick.so srun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
 /opt/software/wannier90-2.1.0/wannier90.x ${i}.win

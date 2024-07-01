@@ -9,7 +9,6 @@ int mkl_serv_intel_cpu_true() {
 }
 EOF
 gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=./libtrick.so
 
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
@@ -20,8 +19,8 @@ export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
 ##xx## For hubbard: run the scf, scf2, and hp
-srun  \$A/pw.x < ${i}.scf2.in > ${i}.scf2.out
-srun  \$A/hp.x < ${i}.hp.in > ${i}.hp.out
+LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.scf2.in > ${i}.scf2.out
+LD_PRELOAD=./libtrick.so srun  \$A/hp.x < ${i}.hp.in > ${i}.hp.out
 rm -f trick.c libtrick.so
 
 EOM

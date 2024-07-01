@@ -9,7 +9,6 @@ int mkl_serv_intel_cpu_true() {
 }
 EOF
 gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=./libtrick.so
 
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
@@ -25,13 +24,13 @@ cp -f ${i}.scf.out ${i}.scf.out1
 
 /home/alberto/bin/pwout2in.awk ${i}.scf.out ${i}.scf.in > bleh.in
 mv bleh.in ${i}.scf.in
-srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
 cp -f ${i}.scf.in ${i}.scf.in2
 cp -f ${i}.scf.out ${i}.scf.out2
 
 /home/alberto/bin/pwout2in.awk ${i}.scf.out ${i}.scf.in > bleh.in
 mv bleh.in ${i}.scf.in
-srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
 cp -f ${i}.scf.in ${i}.scf.in3
 cp -f ${i}.scf.out ${i}.scf.out3
 rm -f trick.c libtrick.so

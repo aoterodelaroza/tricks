@@ -5,11 +5,10 @@ run_bfgs_critic2(){
 ## trick for making MKL think this is an intel processor
 cat > trick.c <<EOF
 int mkl_serv_intel_cpu_true() {
-        return 1;
+	return 1;
 }
 EOF
 gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=./libtrick.so
 
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
@@ -35,7 +34,7 @@ while true ; do
     mv new.scf.in this.scf.in
 
     ## run it and generate the calc file
-    srun \$A/pw.x < this.scf.in > ${i}.scf.out 
+    LD_PRELOAD=./libtrick.so srun \$A/pw.x < this.scf.in > ${i}.scf.out
     grep ! ${i}.scf.out  | awk '{print \$5}' > ${i}.calc
     grep -A 3 'total   stress' ${i}.scf.out  | tail -n 3 | awk '{print \$1,\$2,\$3}' >> ${i}.calc
     grep '   force =' ${i}.scf.out  | awk '{print \$7,\$8,\$9}' >> ${i}.calc

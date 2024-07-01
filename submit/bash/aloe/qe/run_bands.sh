@@ -9,7 +9,6 @@ int mkl_serv_intel_cpu_true() {
 }
 EOF
 gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=./libtrick.so
 
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
@@ -20,9 +19,9 @@ export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
 ##xx## For bands: run the nscf and bands.x
-srun \$A/pw.x < ${i}.nscf.in > ${i}.nscf.out
-srun \$A/bands.x < ${i}.bands.up.in > ${i}.bands.up.out
-srun \$A/bands.x < ${i}.bands.dn.in > ${i}.bands.dn.out
+LD_PRELOAD=./libtrick.so srun \$A/pw.x < ${i}.nscf.in > ${i}.nscf.out
+LD_PRELOAD=./libtrick.so srun \$A/bands.x < ${i}.bands.up.in > ${i}.bands.up.out
+LD_PRELOAD=./libtrick.so srun \$A/bands.x < ${i}.bands.dn.in > ${i}.bands.dn.out
 rm -f trick.c libtrick.so
 
 EOM
