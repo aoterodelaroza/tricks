@@ -2,6 +2,12 @@
 
 run_dis(){
     cat >&3 <<EOM
+function ssrun {
+    export LD_PRELOAD=\$(pwd)/libtrick.so
+    time srun \$@
+    export LD_PRELOAD=
+}
+
 ## trick for making MKL think this is an intel processor
 cat > trick.c <<EOF
 int mkl_serv_intel_cpu_true() {
@@ -19,11 +25,11 @@ export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
 ##xx## For DIs:
-LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-LD_PRELOAD=./libtrick.so srun  \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
-LD_PRELOAD=./libtrick.so srun  \$A/pp.x < ${i}.rho.in > ${i}.rho.out
-LD_PRELOAD=./libtrick.so srun  \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+ssrun  \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+ssrun  \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+ssrun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+ssrun  \$A/pp.x < ${i}.rho.in > ${i}.rho.out
+ssrun  \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -55,7 +61,7 @@ echo "end kpoints" >> ${i}.win
 /opt/software/wannier90-2.1.0/wannier90.x -pp ${i}.win
 mv ${i}.wout ${i}.wout.1
 
-LD_PRELOAD=./libtrick.so srun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+ssrun  \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
 /opt/software/wannier90-2.1.0/wannier90.x ${i}.win

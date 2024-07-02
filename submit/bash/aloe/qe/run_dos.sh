@@ -2,6 +2,12 @@
 
 run_dos(){
     cat >&3 <<EOM
+function ssrun {
+    export LD_PRELOAD=\$(pwd)/libtrick.so
+    time srun \$@
+    export LD_PRELOAD=
+}
+
 ## trick for making MKL think this is an intel processor
 cat > trick.c <<EOF
 int mkl_serv_intel_cpu_true() {
@@ -18,8 +24,8 @@ export MKL_ENABLE_INSTRUCTIONS=AVX512
 export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
-LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.nscf.in > ${i}.nscf.out
-LD_PRELOAD=./libtrick.so srun  \$A/dos.x < ${i}.dos.in > ${i}.dos.out
+ssrun  \$A/pw.x < ${i}.nscf.in > ${i}.nscf.out
+ssrun  \$A/dos.x < ${i}.dos.in > ${i}.dos.out
 rm -f trick.c libtrick.so
 
 EOM

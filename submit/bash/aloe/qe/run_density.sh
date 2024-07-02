@@ -2,6 +2,12 @@
 
 run_density(){
     cat >&3 <<EOM
+function ssrun {
+    export LD_PRELOAD=\$(pwd)/libtrick.so
+    time srun \$@
+    export LD_PRELOAD=
+}
+
 ## trick for making MKL think this is an intel processor
 cat > trick.c <<EOF
 int mkl_serv_intel_cpu_true() {
@@ -19,8 +25,8 @@ export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
 ##xx## For density: use pp.x on .rho.in and on .rhoae.in
-LD_PRELOAD=./libtrick.so srun \$A/pp.x < ${i}.rho.in > ${i}.rho.out
-LD_PRELOAD=./libtrick.so srun \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+ssrun \$A/pp.x < ${i}.rho.in > ${i}.rho.out
+ssrun \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
 rm -f trick.c libtrick.so
 
 EOM

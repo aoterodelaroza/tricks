@@ -2,6 +2,12 @@
 
 run_opt(){
     cat >&3 <<EOM
+function ssrun {
+    export LD_PRELOAD=\$(pwd)/libtrick.so
+    time srun \$@
+    export LD_PRELOAD=
+}
+
 ## trick for making MKL think this is an intel processor
 cat > trick.c <<EOF
 int mkl_serv_intel_cpu_true() {
@@ -24,13 +30,13 @@ cp -f ${i}.scf.out ${i}.scf.out1
 
 /home/alberto/bin/pwout2in.awk ${i}.scf.out ${i}.scf.in > bleh.in
 mv bleh.in ${i}.scf.in
-LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+ssrun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
 cp -f ${i}.scf.in ${i}.scf.in2
 cp -f ${i}.scf.out ${i}.scf.out2
 
 /home/alberto/bin/pwout2in.awk ${i}.scf.out ${i}.scf.in > bleh.in
 mv bleh.in ${i}.scf.in
-LD_PRELOAD=./libtrick.so srun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+ssrun  \$A/pw.x < ${i}.scf.in > ${i}.scf.out
 cp -f ${i}.scf.in ${i}.scf.in3
 cp -f ${i}.scf.out ${i}.scf.out3
 rm -f trick.c libtrick.so
