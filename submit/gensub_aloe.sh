@@ -55,6 +55,12 @@ sbatchadd=""
 # runlist=''
 # clean=''
 #
+# what='crystal'
+# header='mpi' # exclusive
+# variant=''
+# runlist=''
+# clean=''
+#
 
 #### END OF INPUT ####
 
