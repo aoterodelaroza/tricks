@@ -15,7 +15,7 @@ sbatchadd=""
 #
 # what='gaussian'
 # header='omp' # exclusive
-# variant=''
+# variant='' ## g16a (d), g16d
 # runlist='' ## <empty> pack scratch
 # clean='' ## <empty> acpterms
 #

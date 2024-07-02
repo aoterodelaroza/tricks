@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_(){
+init_g16a(){
     cat >&3 <<EOM
 if [ -f /etc/sie_ladon ] ; then
     export g16root="/opt/software/g16A-sie_ladon"
