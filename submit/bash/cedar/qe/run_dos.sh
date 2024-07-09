@@ -2,8 +2,8 @@
 
 run_dos(){
     cat >&3 <<EOM
-mpirun -np \$SLURM_NTASKS \$A/pw.x < ${i}.nscf.in > ${i}.nscf.out
-mpirun -np \$SLURM_NTASKS \$A/dos.x < ${i}.dos.in > ${i}.dos.out
+srun pw.x < ${i}.nscf.in > ${i}.nscf.out
+srun dos.x < ${i}.dos.in > ${i}.dos.out
 
 EOM
 }

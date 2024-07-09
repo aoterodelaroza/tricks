@@ -3,11 +3,11 @@
 run_dis(){
     cat >&3 <<EOM
 ##xx## For DIs:
-mpirun -np \$SLURM_NTASKS \$A/pw.x < ${i}.pawscf.in > ${i}.pawscf.out
-mpirun -np \$SLURM_NTASKS \$A/pp.x < ${i}.rhoae.in > ${i}.rhoae.out
-mpirun -np \$SLURM_NTASKS \$A/pw.x < ${i}.scf.in > ${i}.scf.out
-mpirun -np \$SLURM_NTASKS \$A/pp.x < ${i}.rho.in > ${i}.rho.out
-mpirun -np \$SLURM_NTASKS \$A/open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
+srun pw.x < ${i}.pawscf.in > ${i}.pawscf.out
+srun pp.x < ${i}.rhoae.in > ${i}.rhoae.out
+srun pw.x < ${i}.scf.in > ${i}.scf.out
+srun pp.x < ${i}.rho.in > ${i}.rho.out
+srun open_grid.x < ${i}.opengrid.in > ${i}.opengrid.out
 
 cat > ${i}.win <<EOG
 num_wann = \$(grep states ${i}.scf.out | awk '{print \$NF}')
@@ -39,7 +39,7 @@ echo "end kpoints" >> ${i}.win
 /home/alberto/src/wannier90-2.1.0/wannier90.x -pp ${i}.win > ${i}.wout.1
 
 module load intel/2017
-mpirun -np \$SLURM_NTASKS \$A/pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
+srun pw2wannier90.x < ${i}.pw2wan.in > ${i}.pw2wan.out
 
 export OMP_NUM_THREADS=1
 /home/alberto/src/wannier90-2.1.0/wannier90.x ${i}.win > ${i}.wout.2
