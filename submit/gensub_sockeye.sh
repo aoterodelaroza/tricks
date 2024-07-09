@@ -11,6 +11,12 @@ ncpu="32"
 sbatchadd=""
 
 # ## calc details
+# what='gaussian'
+# header='omp'
+# variant=''
+# runlist='' ## <empty> pack
+# clean='' ## <empty> acpterms
+#
 # what="qe"
 # header="mpi"
 # variant="qe65"
