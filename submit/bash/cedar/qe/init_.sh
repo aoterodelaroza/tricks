@@ -9,9 +9,8 @@ export ESPRESSO_TMPDIR=\${SLURM_TMPDIR}
 export CRITIC_HOME="/home/alberto/git/critic2"
 
 module --force purge
-module load StdEnv/2016.4
-module load quantumespresso/6.1
-A=\$(dirname \$(which pw.x))
+module load StdEnv/2020  intel/2020.1.217  openmpi/4.0.3
+module load quantumespresso/7.2
 
 EOM
 }
