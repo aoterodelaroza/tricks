@@ -19,6 +19,7 @@ gcc -shared -fPIC -o libtrick.so trick.c
 ## instructions for MKL
 export MKL_DEBUG_CPU_TYPE=5
 export MKL_ENABLE_INSTRUCTIONS=AVX512
+export MKL_CBWR=AUTO
 
 ## run with srun to prevent overlap
 export PMIX_MCA_psec=^munge
