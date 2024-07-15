@@ -3,9 +3,10 @@
 init_(){
     cat >&3 <<EOM
 source /etc/profile
-module load gcc/9.4.0
+module load intel-oneapi-compilers
+module load intel-mkl
 module load openmpi/4.1.1-cuda11-3
-module load intel-mkl/2020.4.304
+export LD_LIBRARY_PATH=/arc/software/spack-2024/opt/spack/linux-rocky9-skylake_avx512/intel-2023.2.0/fftw-3.3.10-tpy2nilylq6rdgnrg3ealkw4kh2wt33f/lib/:\$LD_LIBRARY_PATH
 
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1

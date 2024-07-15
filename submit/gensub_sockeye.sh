@@ -19,7 +19,7 @@ sbatchadd=""
 #
 # what="qe"
 # header="mpi"
-# variant="qe65"
+# variant="" ## qe731 qe65
 # runlist="basic" ## basic opt phonons
 # clean="" ## noclean
 # 

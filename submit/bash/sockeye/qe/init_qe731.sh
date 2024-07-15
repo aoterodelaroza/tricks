@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_qe65(){
+init_qe731(){
     cat >&3 <<EOM
 source /etc/profile
 module load intel-oneapi-compilers
@@ -12,7 +12,7 @@ export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 export CRITIC_HOME=/home/aoterode/git/critic2
 export ESPRESSO_TMPDIR=\${SLURM_TMPDIR}
-export ESPRESSO_HOME=/home/aoterode/src/espresso-6.5_thermo
+export ESPRESSO_HOME=/home/aoterode/src/espresso-7.3.1
 export PATH=\$PATH:\${ESPRESSO_HOME}/bin
 A=\$ESPRESSO_HOME/bin
 
