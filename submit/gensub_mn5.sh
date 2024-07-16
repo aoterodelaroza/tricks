@@ -9,13 +9,13 @@ sbatchadd=""
 
 # ## calc details
 # what='fhiaims'
-# header='mpi' # exclusive
+# header='mpi' # mpi highmem
 # variant=''
 # runlist=''
 # clean=''
 # 
 # what='qe'
-# header='mpi' #
+# header='mpi' # mpi highmem
 # variant='qe731' ## qe65thermo qe72 qe731
 # runlist='basic' ## basic opt dos hubbard density phonons bands
 # clean='' ## <empty> noclean
