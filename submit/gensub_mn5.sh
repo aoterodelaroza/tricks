@@ -13,6 +13,12 @@ sbatchadd=""
 # variant=''
 # runlist=''
 # clean=''
+# 
+# what='qe'
+# header='mpi' #
+# variant='qe731' ## qe65thermo qe72 qe731
+# runlist='basic' ## basic opt dos hubbard density phonons bands
+# clean='' ## <empty> noclean
 
 #### END OF INPUT ####
 
