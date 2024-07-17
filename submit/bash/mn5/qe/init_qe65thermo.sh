@@ -7,7 +7,8 @@ module load intel/2024.2
 module load mkl/2024.2
 module load impi/2021.10.0
 module load fftw/3.3.10
-export PATH=/gpfs/projects/udo97/espresso-6.5_thermo/bin/:\$PATH
+module load hdf5/1.14.1-2
+module load quantumespresso/6.5
 
 EOM
 }
