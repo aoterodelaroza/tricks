@@ -49,7 +49,7 @@ EOF
     sed -e '/^ *relax_geometry/d' -e '/^ *relax_unit_cell/d' control.in.orig >> control.in
 
     ## run it and generate the calc file
-    ssrun /opt/software/FHIaims/bin/aims.230214.mpi.x < /dev/null > ${i}.out
+    ssrun \$FHIAIMS < /dev/null > ${i}.out
     rm -f trick.c libtrick.so
 
     grep '| Electronic free energy' ${i}.out | tail -n 1  | awk '{printf "%.14f\n",\$6*0.073498644}' > ${i}.calc

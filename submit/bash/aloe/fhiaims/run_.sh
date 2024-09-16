@@ -24,7 +24,7 @@ export MKL_CBWR=AUTO
 export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
-ssrun /opt/software/FHIaims/bin/aims.230214.scalapack.mpi.x < /dev/null > ${i}.out
+ssrun \$FHIAIMS < /dev/null > ${i}.out
 rm -f trick.c libtrick.so
 
 EOM
