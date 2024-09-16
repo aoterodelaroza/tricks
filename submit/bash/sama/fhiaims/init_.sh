@@ -12,6 +12,7 @@ export MKL_DYNAMIC=FALSE
 export CRITIC_HOME="/home/alberto/git/critic2"
 ulimit -s unlimited
 
-FHIBIN=/home/alberto/git/FHIaims/build/aims.220915.scalapack.mpi.x
+## FHIBIN=/home/alberto/git/FHIaims/build/aims.220915.scalapack.mpi.x
+FHIBIN=/home/alberto/git/FHIaims-xdm-stable/build/aims.240507.scalapack.mpi.x
 EOM
 }
