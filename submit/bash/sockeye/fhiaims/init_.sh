@@ -3,9 +3,8 @@
 init_(){
     cat >&3 <<EOM
 source /etc/profile
-module load intel-oneapi-compilers
-module load intel-mkl
-module load openmpi/4.1.1-cuda11-3
+module load intel-oneapi-compilers/2023.1.0
+module load openmpi/4.1.6-cuda12-4 cmake intel-mkl
 
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
