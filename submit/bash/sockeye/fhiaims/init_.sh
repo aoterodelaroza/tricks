@@ -6,6 +6,7 @@ source /etc/profile
 module load intel-oneapi-compilers/2023.1.0
 module load openmpi/4.1.6-cuda12-4 cmake intel-mkl
 
+export UCX_WARN_UNUSED_ENV_VARS=n
 export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 export MKL_DYNAMIC=FALSE
