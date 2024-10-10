@@ -1,6 +1,6 @@
 #! /usr/bin/awk -f
 
-# usage: phonopy_supercell.awk supercell.scf.in base.scf.in > final
+# usage: phonopy_supercell.awk base.scf.in supercell.scf.in > final
 BEGIN{
     if (ARGC != 3){
 	print "usage: phonopy_supercell.awk base.scf.in supercell.scf.in > final"
