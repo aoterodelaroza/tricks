@@ -12,7 +12,7 @@ export MKL_NUM_THREADS=1
 export MKL_DYNAMIC=FALSE
 ulimit -s unlimited
 
-FHIBIN=/home/alberto/git/FHIaims-xdm-stable/build/aims.240507.mpi.x
+FHIBIN=/home/alberto/git/FHIaims-241018/build/aims.241018.mpi.x
 
 EOM
 }
