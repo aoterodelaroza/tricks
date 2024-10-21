@@ -13,6 +13,7 @@ export CRITIC_HOME="/home/alberto/git/critic2"
 ulimit -s unlimited
 
 ## FHIBIN=/home/alberto/git/FHIaims/build/aims.220915.scalapack.mpi.x
-FHIBIN=/home/alberto/git/FHIaims-xdm-stable/build/aims.240507.scalapack.mpi.x
+## FHIBIN=/home/alberto/git/FHIaims-xdm-stable/build/aims.240507.scalapack.mpi.x
+FHIBIN=/home/alberto/git/FHIaims-241018/build/aims.241018.scalapack.mpi.x
 EOM
 }
