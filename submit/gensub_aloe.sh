@@ -7,6 +7,12 @@ ncpu="8"
 sbatchadd=""
 
 # ## calc details
+# what='empty'
+# header='mpi' # omp
+# variant=''
+# runlist=''
+# clean=''
+#
 # what='orca'
 # header='mpi' # exclusive
 # variant=''
