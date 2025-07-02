@@ -19,6 +19,11 @@ sbatchadd=""
 # runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis bfgs_critic2
 # clean='' ## <empty> noclean
 #
+# what='crystal'
+# header='mpi' # exclusive
+# variant=''
+# runlist=''
+# clean=''
 
 #### END OF INPUT ####
 
