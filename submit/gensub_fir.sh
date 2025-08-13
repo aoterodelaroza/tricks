@@ -1,7 +1,7 @@
 #! /bin/bash
 
 ## cluster details
-cluster="cedar"
+cluster="fir"
 account="ctb-dilabiog" # ctb-dilabiog (priority) | rrg-dilabiog-ad (allocation)
 walltime="28-00:00"
 mempercpu="4000M"
