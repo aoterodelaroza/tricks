@@ -1,0 +1,54 @@
+#! /usr/bin/python3
+
+import numpy as np
+import matplotlib.pyplot as plt
+import sys
+import os, os.path
+
+## consistency checks
+if (len(sys.argv) < 2 or sys.argv[1] == '-h'):
+    print("""
+Usage:
+  plot [-h] [-l] <dat> [col1 col2] [<dat2|. col1 col2 ...]
+where <dat> is a text file containing the data and col1 and col2 are the
+integer column identifiers. A . repeats the last file name. Options:
+  -h : show this help message
+  -l : use lines instead of linespoints
+""")
+    sys.exit()
+
+sysini = 1
+uselines = (sys.argv[1] == '-l')
+if uselines:
+    sysini = 2
+
+plt.ion()
+dat=""
+for i in range(sysini,len(sys.argv),3):
+    if (sys.argv[i] != "."):
+        dat = sys.argv[i]
+    if (len(sys.argv) == 2 + sysini - 1):
+        ix = 1
+        iy = 2
+    else:
+        ix = int(sys.argv[i+1])
+        iy = int(sys.argv[i+2])
+    if (len(dat) == 0):
+        print("Empty filename!")
+        sys.exit(1)
+    if not os.path.exists(dat):
+        print("The file " + dat + " does not exist.")
+        sys.exit(1)
+
+    ## read the file
+    x,y = np.loadtxt(dat,usecols=(ix-1,iy-1),unpack=True)
+
+    ## make the plot
+    #plt.plot(x,y,'o-k')
+    if uselines:
+        plt.plot(x,y,'-',label=dat + "(" + str(ix) + "," + str(iy) + ")")
+    else:
+        plt.plot(x,y,'o-',label=dat + "(" + str(ix) + "," + str(iy) + ")")
+
+plt.legend()
+plt.show(block=True)
