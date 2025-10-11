@@ -36,6 +36,12 @@ sbatchadd=""
 # variant='' ## g16a (d), g16d
 # runlist='' ## <empty> pack scratch
 # clean='' ## <empty> acpterms
+#
+# what='molcspy'
+# header='mpi' # exclusive
+# variant=''
+# runlist='' ##
+# clean=''
 
 #### END OF INPUT ####
 
