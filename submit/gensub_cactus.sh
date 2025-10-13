@@ -42,6 +42,13 @@ sbatchadd=""
 # variant=''
 # runlist='' ##
 # clean=''
+#
+# what='hiphive'
+# header='omp' # exclusive
+# variant='' ## <empty>
+# runlist='' ## <empty>
+# clean='' ## <empty>
+#
 
 #### END OF INPUT ####
 
