@@ -5,7 +5,8 @@ run_basic(){
 
 function ssrun {
     export LD_PRELOAD=\$(pwd)/libtrick.so
-    time srun \$@
+#    time srun \$@ ## does not work with the scalapack version
+    time mpirun \$@
     export LD_PRELOAD=
 }
 

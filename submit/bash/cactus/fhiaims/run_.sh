@@ -4,7 +4,8 @@ run_(){
 	cat >&3 <<EOM
 function ssrun {
     export LD_PRELOAD=\$(pwd)/libtrick.so
-    time srun \$@
+#    time srun \$@  ## does not work with the scalapack version
+    time mpirun \$@
     export LD_PRELOAD=
 }
 
