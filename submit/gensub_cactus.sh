@@ -24,6 +24,31 @@ sbatchadd=""
 # variant=''
 # runlist=''
 # clean=''
+#
+# what='orca'
+# header='mpi' # exclusive
+# variant=''
+# runlist=''
+# clean=''
+#
+# what='gaussian'
+# header='omp' # exclusive
+# variant='' ## g16a (d), g16d
+# runlist='' ## <empty> pack scratch
+# clean='' ## <empty> acpterms
+#
+# what='molcspy'
+# header='mpi' # exclusive
+# variant=''
+# runlist='' ##
+# clean=''
+#
+# what='hiphive'
+# header='omp' # exclusive
+# variant='' ## <empty>
+# runlist='' ## <empty>
+# clean='' ## <empty>
+#
 
 #### END OF INPUT ####
 

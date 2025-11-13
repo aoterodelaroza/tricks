@@ -2,13 +2,6 @@
 
 run_(){
 	cat >&3 <<EOM
-function ssrun {
-    export LD_PRELOAD=\$(pwd)/libtrick.so
-#    time srun \$@  ## does not work with the scalapack version
-    time mpirun \$@
-    export LD_PRELOAD=
-}
-
 ## trick for making MKL think this is an intel processor
 cat > trick.c <<EOF
 int mkl_serv_intel_cpu_true() {
@@ -25,7 +18,14 @@ export MKL_CBWR=AUTO
 export PMIX_MCA_psec=^munge
 export PMIX_MCA_gds=^shmem2
 
-ssrun \$FHIAIMS < /dev/null > ${i}.out
+eval "\$(/opt/software/conda/bin/conda shell.bash hook)"
+conda activate mol-cspy
+
+export LD_PRELOAD=\$(pwd)/libtrick.so
+cspy-dma ${i}.xyz >& ${i}.dmaout
+mpiexec cspy-csp ${i}.xyz -c ${i}_rank0.dma -m ${i}.dma -g fine10 >& ${i}.cspout
+export LD_PRELOAD=
+
 rm -f trick.c libtrick.so
 
 EOM

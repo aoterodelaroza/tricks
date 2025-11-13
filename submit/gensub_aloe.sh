@@ -1,9 +1,8 @@
 #! /bin/bash
 
-## cluster details
 cluster="aloe"
 nnode="1"
-ncpu="8"
+ncpu="4"
 sbatchadd=""
 
 # ## calc details
@@ -66,6 +65,18 @@ sbatchadd=""
 # variant=''
 # runlist=''
 # clean=''
+#
+# what='dftbp'
+# header='omp' # exclusive
+# variant='' ##
+# runlist='' ## <empty>
+# clean='' ## <empty>
+#
+# what='hiphive'
+# header='omp' # exclusive
+# variant='' ## <empty>
+# runlist='' ## <empty>
+# clean='' ## <empty>
 #
 
 #### END OF INPUT ####
