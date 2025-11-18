@@ -37,17 +37,11 @@ sbatchadd=""
 # runlist='' ## <empty> pack scratch
 # clean='' ## <empty> acpterms
 #
-# what='molcspy'
+# what='elk'
 # header='mpi' # exclusive
 # variant=''
-# runlist='' ##
+# runlist='' ## basic bfgs_critic2
 # clean=''
-#
-# what='hiphive'
-# header='omp' # exclusive
-# variant='' ## <empty>
-# runlist='' ## <empty>
-# clean='' ## <empty>
 #
 
 #### END OF INPUT ####
