@@ -17,8 +17,8 @@ sbatchadd=""
 #
 # what='qe'
 # header='mpi'
-# variant='' ## 
-# runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis
+# variant='' ## qe65thermo
+# runlist='basic' ## basic
 # clean='' ## <empty> noclean
 #
 # what='ase'

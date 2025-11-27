@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_(){
+init_qe65thermo(){
     cat >&3 <<EOM
 export ESPRESSO_TMPDIR=\${SLURM_TMPDIR}
 export ESPRESSO_HOME=/home/alberto/src/espresso-6.5_thermo
