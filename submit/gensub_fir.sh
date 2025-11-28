@@ -3,9 +3,9 @@
 ## cluster details
 cluster="fir"
 account="ctb-dilabiog" # ctb-dilabiog (priority) | rrg-dilabiog-ad (allocation)
-walltime="28-00:00"
+walltime="1-00:00"
 mempercpu="4000M"
-ncpu="32"
+ncpu="8"
 sbatchadd=""
 
 # ## calc details
@@ -17,7 +17,7 @@ sbatchadd=""
 #
 # what='qe'
 # header='mpi'
-# variant='' ## qe65thermo
+# variant='' ## qe65thermo qe66 qe731
 # runlist='basic' ## basic
 # clean='' ## <empty> noclean
 #
