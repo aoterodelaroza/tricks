@@ -2,7 +2,7 @@
 
 init_(){
     cat >&3 <<EOM
-source /opt/software/venv/hiphive-1.4/bin/activate
+eval "\$(/opt/software/conda/bin/conda shell.bash hook)"
 
 EOM
 }
