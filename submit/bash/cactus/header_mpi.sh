@@ -11,8 +11,13 @@ header_mpi(){
 #SBATCH -c 1
 #SBATCH ${sbatchadd}
 
-rm \${SLURM_TMPDIR}/*
-export PATH=./:~/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin
+if [ -f /etc/sie_ladon ]; then
+   NODETYPE=sie_ladon
+   export LD_PRELOAD=/opt/software/intel_mkl-2025.3.0.462/libmkl_amd_trick.so
+#   export MKL_ENABLE_INSTRUCTIONS=AVX2
+else
+   NODETYPE=sr630
+fi
 
 EOM
 }

@@ -2,28 +2,28 @@
 
 init_(){
     cat >&3 <<EOM
-## trick for making MKL think this is an intel processor
-cat > trick.c <<EOF
-int mkl_serv_intel_cpu_true() {
-        return 1;
-}
-EOF
-gcc -shared -fPIC -o libtrick.so trick.c
-export LD_PRELOAD=\$(pwd)/libtrick.so
+# intel compiler
+. /opt/software/intel-2025.3.1.16/setvars.sh
 
-## instructions for MKL
-export MKL_DEBUG_CPU_TYPE=5
-export MKL_ENABLE_INSTRUCTIONS=AVX512
-export MKL_CBWR=AUTO
+# openmpi
+export PATH=/opt/software/openmpi-4.1.8_intel/bin/:\$PATH
+export LD_LIBRARY_PATH=/opt/software/openmpi-4.1.8_intel/lib/:\$LD_LIBRARY_PATH
+export MANPATH=/opt/software/openmpi-4.1.8_intel/share/man/:\$MANPATH
+export OMPI_MCA_btl='^openib'
+export OMPI_MCA_btl_openib_warn_no_device_params_found=0
 
-## run with srun to prevent overlap
-export PMIX_MCA_psec=^munge
-export PMIX_MCA_gds=^shmem2
+# mkl
+export MKLROOT=/opt/software/intel_mkl-2025.3.0.462/mkl/2025.3
+export LD_LIBRARY_PATH=\$MKLROOT/lib/intel64:\$LD_LIBRARY_PATH
+export MKL_LIB=\$MKLROOT/lib/intel64
+export MKL_INCLUDE=\$MKLROOT/include
+export MKL_NUM_THREADS=1
+export MKL_DYNAMIC=FALSE
 
-# the correct version of openmpi for orca
-. /opt/software/intel/oneapi/setvars.sh
-export PATH=/opt/software/openmpi-4.1.8_intel/bin:\$PATH
-export LD_LIBRARY_PATH=/opt/software/openmpi-4.1.8_intel/lib:\$LD_LIBRARY_PATH
+# no openmp
+export OMP_NUM_THREADS=1
+export OMP_PROC_BIND=spread
+export OMP_PLACES=threads
 
 # orca
 export PATH=/opt/software/orca_6_1_0_avx2/:\$PATH

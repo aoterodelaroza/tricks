@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_qe731(){
+init_251014(){
     cat >&3 <<EOM
 # intel compiler
 . /opt/software/intel-2025.3.1.16/setvars.sh
@@ -25,10 +25,8 @@ export OMP_NUM_THREADS=1
 export OMP_PROC_BIND=spread
 export OMP_PLACES=threads
 
-# espresso
-export ESPRESSO_TMPDIR=\${SLURM_TMPDIR}
-export ESPRESSO_HOME=/opt/software/espresso-7.3.1_\${NODETYPE}/
-A=\${ESPRESSO_HOME}/bin/
+# fhiaims
+export FHIAIMS=/opt/software/FHIaims_\${NODETYPE}/bin/aims.251014.scalapack.mpi.x
 
 EOM
 }

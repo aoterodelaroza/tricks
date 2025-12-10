@@ -7,17 +7,29 @@ ncpu="8"
 sbatchadd=""
 
 # ## calc details
+# what='qe'
+# header='mpi' # mpi exclusive
+# variant='qe65thermo' ## qe65thermo qe731
+# runlist='basic' ## basic opt
+# clean='' ## <empty> noclean
+#
 # what='fhiaims'
-# header='mpi' # exclusive
-# variant=''
-# runlist='basic' ## basic bfgs_critic2
+# header='mpi' # mpi exclusive
+# variant='251014' # 251014
+# runlist=''
 # clean=''
 #
-# what='qe'
-# header='mpi' # exclusive
-# variant='qe65thermo qe731' ## qe65thermo qe731
-# runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis bfgs_critic2
-# clean='' ## <empty> noclean
+# what='gaussian'
+# header='omp' # exclusive
+# variant='g16a' ## g16a
+# runlist='' ## <empty> pack scratch
+# clean='' ## <empty> acpterms
+#
+# what='hiphive'
+# header='omp' # exclusive
+# variant=''
+# runlist=''
+# clean=''
 #
 # what='crystal'
 # header='mpi' # exclusive
@@ -30,12 +42,6 @@ sbatchadd=""
 # variant=''
 # runlist=''
 # clean=''
-#
-# what='gaussian'
-# header='omp' # exclusive
-# variant='' ## g16a (d), g16d
-# runlist='' ## <empty> pack scratch
-# clean='' ## <empty> acpterms
 #
 # what='elk'
 # header='mpi' # exclusive
