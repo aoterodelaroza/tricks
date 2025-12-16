@@ -2,7 +2,7 @@
 
 run_basic(){
     cat >&3 <<EOM
-mpirun \$A/pw.x < ${i}.scf.in > ${i}.scf.out
+mpirun \$A/bin/pw.x < ${i}.scf.in > ${i}.scf.out
 
 EOM
 }

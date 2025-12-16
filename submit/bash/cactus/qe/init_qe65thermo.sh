@@ -28,7 +28,7 @@ export OMP_PLACES=threads
 # espresso
 export ESPRESSO_TMPDIR=\${SLURM_TMPDIR}
 export ESPRESSO_HOME=/opt/software/espresso-6.5_\${NODETYPE}/
-A=\${ESPRESSO_HOME}/bin/
+A=\${ESPRESSO_HOME}
 
 EOM
 }
