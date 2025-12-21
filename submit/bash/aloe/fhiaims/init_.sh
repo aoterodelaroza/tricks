@@ -12,7 +12,8 @@ ulimit -s unlimited
 export PATH=/opt/software/openmpi-4.1.6_intel/bin/:\$PATH
 export LD_LIBRARY_PATH=/opt/software/openmpi-4.1.6_intel/lib/:\$LD_LIBRARY_PATH
 
-export FHIAIMS=/opt/software/FHIaims/bin/aims.241018.scalapack.mpi.x
+#export FHIAIMS=/opt/software/FHIaims/bin/aims.241018.scalapack.mpi.x
+export FHIAIMS=/opt/software/FHIaims/bin/aims.251014.scalapack.mpi.x
 
 EOM
 }
