@@ -11,8 +11,5 @@ header_omp(){
 #SBATCH -c ${ncpu}
 #SBATCH ${sbatchadd}
 
-rm \${SLURM_TMPDIR}/*
-export PATH=./:~/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin
-
 EOM
 }

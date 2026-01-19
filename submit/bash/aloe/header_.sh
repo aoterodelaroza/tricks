@@ -11,8 +11,5 @@ header_(){
 #SBATCH -c 1
 #SBATCH ${sbatchadd}
 
-rm \${SLURM_TMPDIR}/*
-export PATH=./:~/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin
-
 EOM
 }
