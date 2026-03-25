@@ -2,7 +2,6 @@
 
 run_pack(){
 	cat >&3 <<EOM
-rm -r \${SLURM_TMPDIR}/*.log
 cp -f ${i}.tar.xz \${SLURM_TMPDIR}
 cd \${SLURM_TMPDIR}
 tar xf ${i}.tar.xz

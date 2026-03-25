@@ -25,9 +25,8 @@ export OMP_NUM_THREADS=1
 export OMP_PROC_BIND=spread
 export OMP_PLACES=threads
 
-# fhiaims
-export FHIAIMS=/opt/software/FHIaims/bin/aims.251014.scalapack.mpi.x
+# elk
+export ELK=/home/alberto/src/elk-10.6.11/src/elk
 
 EOM
 }
-

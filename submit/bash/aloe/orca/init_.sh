@@ -1,6 +1,6 @@
 #! /bin/bash
 
-init_qe65thermo(){
+init_(){
     cat >&3 <<EOM
 # intel compiler
 . /opt/software/intel-2025.3.1.16/setvars.sh
@@ -25,10 +25,9 @@ export OMP_NUM_THREADS=1
 export OMP_PROC_BIND=spread
 export OMP_PLACES=threads
 
-# espresso
-export ESPRESSO_TMPDIR=\${SLURM_TMPDIR}
-export ESPRESSO_HOME=/opt/software/espresso-6.5_\${NODETYPE}/
-A=\${ESPRESSO_HOME}
+# orca
+export PATH=/opt/software/orca_6_1_0_avx2/:\$PATH
+export LD_LIBRARY_PATH=/opt/software/orca_6_1_0_avx2/:\$LD_LIBRARY_PATH
 
 EOM
 }
