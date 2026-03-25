@@ -1,60 +1,31 @@
 #! /bin/bash
 
+## cluster details
 cluster="aloe"
 nnode="1"
-ncpu="4"
+ncpu="8"
 sbatchadd=""
 
 # ## calc details
-# what='empty'
-# header='mpi' # omp
-# variant=''
-# runlist=''
-# clean=''
+# what='qe'
+# header='mpi' # mpi exclusive
+# variant='qe65thermo' ## qe65thermo qe731
+# runlist='basic' ## basic opt
+# clean='' ## <empty> noclean
 #
-# what='orca'
-# header='mpi' # exclusive
-# variant=''
+# what='fhiaims'
+# header='mpi' # mpi exclusive
+# variant='251014' # 251014
 # runlist=''
 # clean=''
 #
 # what='gaussian'
 # header='omp' # exclusive
-# variant='' ## g16a (d), g16d
+# variant='g16a' ## g16a
 # runlist='' ## <empty> pack scratch
 # clean='' ## <empty> acpterms
 #
-# what='fhiaims'
-# header='mpi' # exclusive
-# variant=''
-# runlist='' ##
-# clean=''
-#
-# what='qe'
-# header='mpi' # exclusive
-# variant='qe65thermo qe731' ## qe65thermo qe731
-# runlist='basic' ## basic opt dos thermo hubbard density phonons bands dis bfgs_critic2
-# clean='' ## <empty> noclean
-#
-# what='ase'
-# header='mpi' # exclusive
-# variant='aims' ## aims
-# runlist=''
-# clean=''
-#
-# what='mrcc'
-# header='omp' # exclusive
-# variant=''
-# runlist=''
-# clean=''
-#
-# what='vasp'
-# header='mpi' # exclusive
-# variant=''
-# runlist=''
-# clean=''
-#
-# what='psi4'
+# what='hiphive'
 # header='omp' # exclusive
 # variant=''
 # runlist=''
@@ -66,17 +37,17 @@ sbatchadd=""
 # runlist=''
 # clean=''
 #
-# what='dftbp'
-# header='omp' # exclusive
-# variant='' ##
-# runlist='' ## <empty>
-# clean='' ## <empty>
+# what='orca'
+# header='mpi' # exclusive
+# variant=''
+# runlist=''
+# clean=''
 #
-# what='hiphive'
-# header='omp' # exclusive
-# variant='' ## <empty>
-# runlist='' ## <empty>
-# clean='' ## <empty>
+# what='elk'
+# header='mpi' # exclusive
+# variant=''
+# runlist='' ## basic bfgs_critic2
+# clean=''
 #
 
 #### END OF INPUT ####
