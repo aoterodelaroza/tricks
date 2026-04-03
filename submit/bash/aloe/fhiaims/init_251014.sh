@@ -3,12 +3,12 @@
 init_251014(){
     cat >&3 <<EOM
 # intel compiler
-. /opt/software/intel-2025.3.1.16/setvars.sh
+. /opt/software/intel-2023.2.1/compiler/latest/env/vars.sh
 
 # openmpi
-export PATH=/opt/software/openmpi-4.1.8_intel/bin/:\$PATH
-export LD_LIBRARY_PATH=/opt/software/openmpi-4.1.8_intel/lib/:\$LD_LIBRARY_PATH
-export MANPATH=/opt/software/openmpi-4.1.8_intel/share/man/:\$MANPATH
+export PATH=/opt/software/openmpi-4.1.8_intel2023/bin/:\$PATH
+export LD_LIBRARY_PATH=/opt/software/openmpi-4.1.8_intel2023/lib/:\$LD_LIBRARY_PATH
+export MANPATH=/opt/software/openmpi-4.1.8_intel2023/share/man/:\$MANPATH
 export OMPI_MCA_btl='^openib'
 export OMPI_MCA_btl_openib_warn_no_device_params_found=0
 
