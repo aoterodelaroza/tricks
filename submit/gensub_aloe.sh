@@ -49,6 +49,12 @@ sbatchadd=""
 # runlist='' ## basic bfgs_critic2
 # clean=''
 #
+#
+# what='dftbp'
+# header='omp' # exclusive
+# variant='' ## g16a
+# runlist='' ## <empty> pack scratch
+# clean='' ## <empty> acpterms
 
 #### END OF INPUT ####
 
