@@ -14,15 +14,25 @@ where <dat> is a text file containing the data and col1 and col2 are the
 integer column identifiers. A . repeats the last file name. Options:
   -h : show this help message
   -l : use lines instead of linespoints
+  -p : print to plot.pdf
 """)
     sys.exit()
 
 sysini = 1
-uselines = (sys.argv[1] == '-l')
-if uselines:
-    sysini = 2
+uselines = False
+printpdf = False
+while (sysini < len(sys.argv) and sys.argv[sysini].startswith('-')):
+    if (sys.argv[sysini] == '-l'):
+        uselines = True
+    elif (sys.argv[sysini] == '-p'):
+        printpdf = True
+    else:
+        print("Unknown option: " + sys.argv[sysini])
+        sys.exit(1)
+    sysini += 1
 
-plt.ion()
+if not printpdf:
+    plt.ion()
 dat=""
 for i in range(sysini,len(sys.argv),3):
     if (sys.argv[i] != "."):
@@ -51,4 +61,8 @@ for i in range(sysini,len(sys.argv),3):
         plt.plot(x,y,'o-',label=dat + "(" + str(ix) + "," + str(iy) + ")")
 
 plt.legend()
-plt.show(block=True)
+if printpdf:
+    plt.savefig("plot.pdf")
+    print("Plot saved to plot.pdf")
+else:
+    plt.show(block=True)
