@@ -56,6 +56,13 @@ sbatchadd=""
 # runlist='' ## <empty> pack scratch
 # clean='' ## <empty> acpterms
 
+#
+# what='gulp'
+# header='mpi' # mpi exclusive
+# variant='64' ## 64
+# runlist='' ## <empty> scratch
+# clean=''
+
 #### END OF INPUT ####
 
 dirloc="~/git/tricks/submit"

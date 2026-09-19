@@ -1,0 +1,41 @@
+#! /bin/bash
+
+init_64(){
+    cat >&3 <<EOM
+# gulp 6.4: single binary (intel 2023 + openmpi-4.1.8_intel2023 + MKL),
+# AVX2 baseline (-march=core-avx2) so that it runs on sie_ladon and on sr630
+
+# intel compiler
+. /opt/software/intel-2023.2.1/compiler/latest/env/vars.sh
+
+# openmpi
+export PATH=/opt/software/openmpi-4.1.8_intel2023/bin/:\$PATH
+export LD_LIBRARY_PATH=/opt/software/openmpi-4.1.8_intel2023/lib/:\$LD_LIBRARY_PATH
+export MANPATH=/opt/software/openmpi-4.1.8_intel2023/share/man/:\$MANPATH
+export OMPI_MCA_btl='^openib'
+export OMPI_MCA_btl_openib_warn_no_device_params_found=0
+
+# mkl (blas/lapack/scalapack); AVX512 beats AVX2 for MKL on zen4c
+export MKLROOT=/opt/software/intel_mkl-2025.3.0.462/mkl/2025.3
+export LD_LIBRARY_PATH=\$MKLROOT/lib/intel64:\$LD_LIBRARY_PATH
+export MKL_LIB=\$MKLROOT/lib/intel64
+export MKL_INCLUDE=\$MKLROOT/include
+export MKL_NUM_THREADS=1
+export MKL_DYNAMIC=FALSE
+if [ "\$NODETYPE" == "sie_ladon" ]; then
+   export MKL_ENABLE_INSTRUCTIONS=AVX512
+fi
+
+# gulp has no openmp
+export OMP_NUM_THREADS=1
+export OMP_PROC_BIND=spread
+export OMP_PLACES=threads
+
+# gulp
+export GULP_HOME=/opt/software/gulp-6.4
+export GULP_LIB=\$GULP_HOME/Libraries
+export GULP_DOC=\$GULP_HOME/Docs
+export GULP=\$GULP_HOME/bin/gulp
+
+EOM
+}
