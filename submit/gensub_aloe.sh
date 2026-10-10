@@ -55,13 +55,18 @@ sbatchadd=""
 # variant='' ## g16a
 # runlist='' ## <empty> pack scratch
 # clean='' ## <empty> acpterms
-
 #
 # what='gulp'
 # header='mpi' # mpi exclusive
 # variant='64' ## 64
 # runlist='' ## <empty> scratch
 # clean=''
+#
+# what='vasp'
+# header='mpi' # mpi exclusive
+# variant='651' ## 651
+# runlist='' ## <empty> gam
+# clean='' ## <empty> noclean
 
 #### END OF INPUT ####
 

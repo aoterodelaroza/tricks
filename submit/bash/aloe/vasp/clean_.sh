@@ -1,0 +1,8 @@
+#! /bin/bash
+
+clean_(){
+    cat >&3 <<EOM
+rm -f WAVECAR CHG CHGCAR WAVEDER PROCAR LOCPOT ELFCAR TMPCAR REPORT
+
+EOM
+}
