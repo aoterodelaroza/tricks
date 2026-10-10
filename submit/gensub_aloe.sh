@@ -67,6 +67,12 @@ sbatchadd=""
 # variant='651' ## 651
 # runlist='' ## <empty> gam
 # clean='' ## <empty> noclean
+#
+# what='critic2'
+# header='omp' # exclusive
+# variant=''
+# runlist=''
+# clean=''
 
 #### END OF INPUT ####
 
